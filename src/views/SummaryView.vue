@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="container-fluid">
     <div class="card bg-light mb-3" style="max-width: 18rem;">
       <div class="card-header">Header</div>
       <div class="card-body">

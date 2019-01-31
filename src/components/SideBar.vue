@@ -103,7 +103,7 @@
   left: 0px;
   width: 300px;
   height: 100%;
-  color: #e1ffff;
+  color: #ffffff;
 }
 .nav-side-menu .brand {
   background-color: #374955;
@@ -188,7 +188,7 @@
 }
 .nav-side-menu li a {
   text-decoration: none;
-  color: #e1ffff;
+  color: #ffffff;
 }
 .nav-side-menu li a i {
   padding-left: 10px;

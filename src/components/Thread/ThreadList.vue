@@ -5,8 +5,10 @@
         <i
           @click.stop="tableRowDetailToggle(row)"
           class="tableIcon fa"
-          v-bind:class=" row.detailsShowing ? 'fa-minus-square' : 'fa-plus-square'"
-                  ></i>
+          v-bind:class="
+          row.detailsShowing ? 'fa-minus-square' : 'fa-plus-square'
+          "
+        ></i>
       </template>
       <template slot="row-details" slot-scope="row">
         <b-card style="background-color:whitesmoke;">
@@ -45,7 +47,7 @@ export default {
         osThreadId: {
           label: "Os Id",
           sortable: true,
-          formatter: (value, key, item) => {
+          formatter: value => {
             return numberHelper.decimalToHexString(value);
           }
         },
@@ -61,14 +63,14 @@ export default {
         userTimeMiliseconds: {
           label: "User Time",
           sortable: true,
-          formatter: (value, key, item) => {
+          formatter: value => {
             return timeHelper.msToTime(value);
           }
         },
         kernelTimeMiliseconds: {
           label: "Kernel Time",
           sortable: true,
-          formatter: (value, key, item) => {
+          formatter: value => {
             return timeHelper.msToTime(value);
           }
         }
@@ -77,8 +79,6 @@ export default {
   },
   methods: {
     tableRowDetailToggle: function(row) {
-      if (!row.detailsShowing) {
-      }
       row.toggleDetails();
     },
     list: function() {
@@ -108,7 +108,7 @@ export default {
 };
 </script>
 
-<style >
+<style>
 .tableIcon {
   font-size: 18px;
   cursor: pointer;

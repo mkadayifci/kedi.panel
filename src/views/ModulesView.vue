@@ -1,31 +1,21 @@
 <template>
-  <div class="home">
-    <ModuleList ref ="moduleList"/>
-  </div>
+  <ModuleList ref="moduleList"/>
 </template>
-
 <script>
 import ModuleList from "@/components/Module/ModuleList.vue";
-
 import axios from "axios";
 
 export default {
   name: "modules",
-  components: {ModuleList},
+  components: { ModuleList },
   data: function() {
     return {
       modules: {}
     };
   },
-  methods: {
-  },
+  methods: {},
   mounted() {
     this.$refs.moduleList.list();
-
-
   }
 };
 </script>
-
-
-   

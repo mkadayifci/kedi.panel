@@ -2,10 +2,10 @@
   <div id="app">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-2">
+        <div class="col-md-2 ">
           <SideBar/>
         </div>
-        <div class="col-md-10">
+        <div class="col-md-10 pl-0">
           <div>
             <div class="row">
               <router-view/>

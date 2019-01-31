@@ -1,9 +1,17 @@
 <template>
-  <div>
-    <ul>
-      <li v-for="(result, index) in modules" :key="index">{{result.name}}</li>
-    </ul>
+  
+    <div class="container-fluid">
+    <div v-for="(result, index) in modules" :key="index" class="card bg-light mb-3" >
+      <div class="card-header">{{result.fileName}}</div>
+      <div class="card-body">
+
+        <span>{{result.fullPath}}</span>
+        <p class="card-text"></p>
+      </div>
+    </div>
   </div>
+  
+  
 </template>
 
 <script>

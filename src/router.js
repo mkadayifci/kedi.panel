@@ -1,8 +1,9 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Threads from "./views/Threads.vue";
-import Summary from "./views/Summary.vue";
-import Modules from "./views/Modules.vue";
+import ThreadsView from "./views/ThreadsView.vue";
+import SummaryView from "./views/SummaryView.vue";
+import ModulesView from "./views/ModulesView.vue";
+import ObjectView from "./views/ObjectView.vue";
 
 Vue.use(Router);
 
@@ -11,18 +12,23 @@ export default new Router({
     {
       path: "/summary",
       name: "summaryView",
-      component: Summary,
+      component: SummaryView,
       alias: '/'
     },
     {
       path: "/threads",
       name: "threads",
-      component: Threads
+      component: ThreadsView
+    },
+    {
+      path: "/object/:objectPointer",
+      name: "object",
+      component: ObjectView
     },
     {
       path: "/modules",
       name: "moduleView",
-      component: Modules
+      component: ModulesView
     }
 
   ]
