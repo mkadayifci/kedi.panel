@@ -17,6 +17,7 @@
   </div>
 </template>
 <script>
+require('typeface-open-sans');
 import SideBar from "@/components/SideBar.vue";
 import TopBar from "@/components/TopBar.vue";
 
@@ -28,10 +29,13 @@ export default {
 
 <style>
 #app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-family: "Open Sans","Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 12px;
   color: #2c3e50;
+}
+.pt-80{
+  padding-top: 80px !important;
 }
 </style>

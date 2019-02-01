@@ -4,6 +4,7 @@ import ThreadsView from "./views/ThreadsView.vue";
 import SummaryView from "./views/SummaryView.vue";
 import ModulesView from "./views/ModulesView.vue";
 import ObjectView from "./views/ObjectView.vue";
+import TerminalView from "./views/TerminalView.vue";
 
 Vue.use(Router);
 
@@ -19,6 +20,11 @@ export default new Router({
       path: "/threads",
       name: "threads",
       component: ThreadsView
+    },
+    {
+      path: "/terminal",
+      name: "terminal",
+      component: TerminalView
     },
     {
       path: "/object/:objectPointer",

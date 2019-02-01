@@ -8,6 +8,7 @@ import BootstrapVue from "bootstrap-vue";
 import router from "./router";
 import store from "./store";
 
+window.$ = window.jQuery = require('jquery');
 
 Vue.use(BootstrapVue);
 

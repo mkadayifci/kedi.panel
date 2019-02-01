@@ -1,5 +1,6 @@
 <template>
-  <div class="container-fluid">
+  <div class="container-fluid pt-80">
+    <TopBar/>
     <div class="card bg-light mb-3" style="max-width: 18rem;">
       <div class="card-header">Header</div>
       <div class="card-body">
@@ -11,11 +12,12 @@
 </template>
 
 <script>
+import TopBar from "@/components/TopBar.vue";
 import axios from "axios";
 
 export default {
   name: "summary",
-  components: {},
+  components: {TopBar},
   data: function() {
     return {
       summary: {}

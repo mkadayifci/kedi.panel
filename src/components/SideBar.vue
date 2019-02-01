@@ -1,9 +1,7 @@
 <template>
   <div class="nav-side-menu">
-    <div class="brand brand-kedi">
-      <img :src="require('@/assets/images/logo-mini.png')">
-      kedi.io
-    </div>
+    <!-- <div class="brand brand-kedi">
+    </div>-->
     <div class="menu-list">
       <ul id="menu-content" class="menu-content collapse out">
         <router-link right class="nav-item" tag="li" to="/summary">
@@ -15,8 +13,11 @@
         <router-link right class="nav-item" tag="li" to="/threads">
           <i class="fa fa-cogs fa-lg"></i> Threads
         </router-link>
+        <router-link right class="nav-item" tag="li" to="/terminal">
+          <i class="fa fa-terminal fa-lg"></i> Terminal Session
+        </router-link>
 
-        <li data-toggle="collapse" data-target="#products" class="collapsed active">
+        <!-- <li data-toggle="collapse" data-target="#products" class="collapsed active">
           <a href="#">
             <i class="fa fa-gift fa-lg"></i> UI Elements
             <span class="arrow"></span>
@@ -86,7 +87,7 @@
           <a href="#">
             <i class="fa fa-users fa-lg"></i> Users
           </a>
-        </li>
+        </li>-->
       </ul>
     </div>
   </div>
@@ -97,13 +98,16 @@
 .nav-side-menu {
   overflow: auto;
   font-size: 14px;
-  background-color: #0079a5;
+  background-color: #181818;
   position: fixed;
-  top: 0px;
+  top: 60px;
   left: 0px;
   width: 300px;
   height: 100%;
   color: #ffffff;
+  box-shadow: 0px 0px 1px black;
+  -moz-box-shadow: 0px 0px 1px black;
+  -webkit-box-shadow: 0px 0px 1px black;
 }
 .nav-side-menu .brand {
   background-color: #374955;
@@ -150,7 +154,8 @@
 .nav-side-menu ul .router-link-active,
 .nav-side-menu li .router-link-active {
   border-left: 3px solid #d19b3d;
-  background-color: #374955;
+  background-color: #d19b3d;
+  color: black;
 }
 .nav-side-menu ul .sub-menu li.active,
 .nav-side-menu li .sub-menu li.active {
@@ -165,7 +170,7 @@
   background-color: #181c20;
   border: none;
   line-height: 28px;
-  border-bottom: 1px solid #0079a5;
+  border-bottom: 1px solid #181818;
   margin-left: 0px;
 }
 .nav-side-menu ul .sub-menu li:hover,
@@ -182,9 +187,9 @@
   vertical-align: middle;
 }
 .nav-side-menu li {
-  padding-left: 30px;
-  border-left: 3px solid #0079a5;
-  border-bottom: 1px solid #0079a5;
+  padding-left: 10px;
+  border-left: 3px solid #181818;
+  border-bottom: 1px solid #181818;
 }
 .nav-side-menu li a {
   text-decoration: none;
