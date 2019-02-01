@@ -95,7 +95,7 @@ export default {
     },
     prepareThreadDataForPresantation(threadData) {
       threadData.forEach(item => {
-        item._showDetails = true;
+        item._showDetails = false;
         for (let i = 0; i < item.stackTrace.length; i++) {
           item.stackTrace[i].displayString =
             new String(" ").repeat((i + 1) * 1) +

@@ -13,6 +13,9 @@
         <router-link right class="nav-item" tag="li" to="/threads">
           <i class="fa fa-cogs fa-lg"></i> Threads
         </router-link>
+        <router-link right class="nav-item" tag="li" to="/memory">
+          <i class="fa fa-microchip fa-lg"></i> Memory Stats
+        </router-link>
         <router-link right class="nav-item" tag="li" to="/terminal">
           <i class="fa fa-terminal fa-lg"></i> Terminal Session
         </router-link>

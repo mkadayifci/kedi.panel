@@ -1,6 +1,9 @@
 <template>
   <div class="container-fluid pt-80">
+    <h5>Modules</h5>
+    <hr>
     <TopBar/>
+
     <ModuleList ref="moduleList"/>
   </div>
 </template>

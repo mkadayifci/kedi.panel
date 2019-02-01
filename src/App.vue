@@ -33,7 +33,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 12px;
-  color: #2c3e50;
+  color: #111111;
 }
 .pt-80{
   padding-top: 80px !important;

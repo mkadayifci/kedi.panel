@@ -7,10 +7,13 @@ import App from "./App.vue";
 import BootstrapVue from "bootstrap-vue";
 import router from "./router";
 import store from "./store";
+import ECharts from 'vue-echarts' 
 
 window.$ = window.jQuery = require('jquery');
 
 Vue.use(BootstrapVue);
+
+Vue.component('v-chart', ECharts)
 
 Vue.config.productionTip = false;
 

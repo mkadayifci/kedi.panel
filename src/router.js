@@ -5,6 +5,7 @@ import SummaryView from "./views/SummaryView.vue";
 import ModulesView from "./views/ModulesView.vue";
 import ObjectView from "./views/ObjectView.vue";
 import TerminalView from "./views/TerminalView.vue";
+import MemoryView from "./views/MemoryView.vue";
 
 Vue.use(Router);
 
@@ -20,6 +21,11 @@ export default new Router({
       path: "/threads",
       name: "threads",
       component: ThreadsView
+    },
+    {
+      path: "/memory",
+      name: "memory",
+      component: MemoryView
     },
     {
       path: "/terminal",

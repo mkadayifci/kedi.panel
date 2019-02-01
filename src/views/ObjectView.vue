@@ -2,11 +2,38 @@
 
 <template>
   <div class="container-fluid pt-80">
+    <h5>Object Inspector</h5>
+    <hr>
     <TopBar/>
-    <div
-      class="pb-2 mt-4 mb-2 border-bottom"
-    >Object Detail of {{this.$route.params.objectPointer}} / {{this.objectDetail.typeName}}</div>
-    {{this.objectDetail.elementType}}
+
+    <div>Address: {{this.objectDetail.objectPointer}}</div>
+    <div>HexAddress: {{this.objectDetail.hexAddress}}</div>
+    <div>MethodTable: {{this.objectDetail.methodTable}}</div>
+    <div>Module: {{this.objectDetail.module}}</div>
+    <div>ElementType: {{this.objectDetail.elementType}}</div>
+    <div>TypeName: {{this.objectDetail.typeName}}</div>
+    <div>BaseTypeName: {{this.objectDetail.baseTypeName}}</div>
+
+    <div>Size: {{this.objectDetail.size}}</div>
+    <div>IsArray: {{this.objectDetail.isArray}}</div>
+    <div>IsBoxed: {{this.objectDetail.isBoxed}}</div>
+    <div>IsNull: {{this.objectDetail.isNull}}</div>
+    <div>ObjectValue: {{this.objectDetail.objectValue}}</div>
+    <!-- 
+ObjectPointer = objPtr,
+                clrObject.HexAddress,
+                clrObject.Size,
+                clrObject.IsArray,
+                clrObject.IsBoxed,
+                clrObject.,
+                =type.BaseType?.Name,
+                type.,
+                type.,
+                TypeName = type.Name,
+                 = type.GetValue(objPtr),
+                Members = new List<dynamic>(),
+                Values = new List<DateTime>(),
+    type.-->
     <template>
       <b-table hover :items="objectDetail.members" class="table b-table table-hover table-sm"></b-table>
     </template>
@@ -17,7 +44,7 @@ import TopBar from "@/components/TopBar.vue";
 import apiGateway from "@/server-communication/api-gateway";
 
 export default {
-  components:{TopBar},
+  components: { TopBar },
   data: () => {
     return {
       objectDetail: {}
@@ -32,7 +59,6 @@ export default {
       .catch(error => {
         console.log(error);
       });
-  
   }
 };
 </script>

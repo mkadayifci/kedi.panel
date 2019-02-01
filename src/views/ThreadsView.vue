@@ -1,5 +1,7 @@
 <template>
   <div class="container-fluid pt-80">
+    <h5>Thread List</h5>
+    <hr/>
     <TopBar/>
     <ModuleList ref="moduleList"/>
     <ThreadList ref="threadList"/>
