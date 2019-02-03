@@ -31,27 +31,39 @@ export default {
       fields: {
         objectPointer: {
           label: "Address",
-          sortable: true
+          sortable: true,
+          tdClass:"columnWidth"
         },
         typeName: {
           label: "Exception Type",
-          sortable: true
+          sortable: true,
+          tdClass:"columnWidth"
         },
         message: {
           label: "Message",
-          sortable: true
+          sortable: true,
+          tdClass:"columnWidth"
         },
         method: {
           label: "Method",
-          sortable: true
+          sortable: true,
+          tdClass:"columnWidth"
         },
         
         hResult: {
           label: "HResult",
-          sortable: true
+          sortable: true,
+          tdClass:"columnWidth"
         }
       }
     };
   }
 };
 </script>
+<style>
+.columnWidth{
+    width: 1px;
+    padding-right: 10px !important;
+}
+</style>
+

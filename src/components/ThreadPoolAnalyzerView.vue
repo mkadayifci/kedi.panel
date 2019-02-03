@@ -55,25 +55,26 @@ export default {
       return `${this.threadPoolDetail.cpuUtilization}%`;
     },
     threadBoxText: function() {
-      return `Min: ${this.threadPoolDetail.minThreads}, Max: ${
+      return `Minf: ${this.threadPoolDetail.minThreads}, Magx: ${
         this.threadPoolDetail.maxThreads
       }`;
     },
     completationThreadBoxText: function() {
-      return `Min: ${this.threadPoolDetail.minCompletionPorts}, Max: ${
+      return `Minf: ${this.threadPoolDetail.minCompletionPorts}, Maxg: ${
         this.threadPoolDetail.maxCompletionPorts
       }`;
     }
   },
   methods: {},
   mounted() {
+      
     apiGateway
       .getThreadPoolDetail(this.$route.params.sessionId)
       .then(response => {
         this.threadPoolDetail = response.data;
       })
       .catch(error => {
-        this.items = [];
+        this.threadPoolDetail = {};
       });
   }
 };

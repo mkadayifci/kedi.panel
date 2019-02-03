@@ -1,22 +1,33 @@
 <template>
   <div class="container-fluid pt-80">
     <h5>Thread List</h5>
-    <hr/>
+    <hr>
     <TopBar/>
-    <ModuleList ref="moduleList"/>
-    <ThreadList ref="threadList"/>
+    <ThreadList v-show="isLoaded" v-on:on-loaded="onThreadListLoaded" ref="threadList"/>
   </div>
 </template>
 
 <script>
 import ThreadList from "@/components/Thread/ThreadList.vue";
-import ModuleList from "@/components/Module/ModuleList.vue";
 import TopBar from "@/components/TopBar.vue";
 
 export default {
   name: "threads",
-  components: { ThreadList, ModuleList,TopBar },
+  data: function() {
+    return {
+      isLoaded: false
+    };
+  },
+  computed: {},
+  components: { ThreadList, TopBar },
+  methods: {
+    onThreadListLoaded: function() {
+      this.isLoaded=true;
+      this.$Progress.finish();
+    }
+  },
   mounted() {
+    this.$Progress.start();
     this.$refs.threadList.list();
   }
 };

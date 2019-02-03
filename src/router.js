@@ -65,7 +65,7 @@ export default new Router({
       component: DuplicateStringsAnalyzerView
     },
     {
-      path: "/threadpool-analyzer",
+      path: "/threadpool-analyzer/:sessionId",
       name: "threadpool-analyzer",
       component: ThreadPoolAnalyzerView
     },

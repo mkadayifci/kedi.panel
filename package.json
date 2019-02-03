@@ -21,7 +21,8 @@
     "typeface-open-sans": "^0.0.54",
     "typeface-ubuntu-mono": "^0.0.54",
     "vue-echarts": "^4.0.1",
-    "echarts": "^4.2.0-rc.2"
+    "echarts": "^4.2.0-rc.2",
+    "vue-progressbar": "^0.7.5"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.3.0",

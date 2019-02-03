@@ -1,17 +1,7 @@
 <template>
-  
-    <div class="container-fluid">
-    <div v-for="(result, index) in modules" :key="index" class="card bg-light mb-3" >
-      <div class="card-header">{{result.fileName}}</div>
-      <div class="card-body">
-
-        <span>{{result.fullPath}}</span>
-        <p class="card-text"></p>
-      </div>
-    </div>
+  <div class="container-fluid">
+    <b-table style="white-space: pre" small hover :items="modules"></b-table>
   </div>
-  
-  
 </template>
 
 <script>
@@ -41,3 +31,21 @@ export default {
   }
 };
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

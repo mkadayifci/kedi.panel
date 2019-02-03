@@ -21,18 +21,21 @@
           </a>
         </li>
         <ul style="padding-left:35px" class="sub-menu collapse" id="products">
-            <router-link tag="li" to="/exception-analyzer">Exception</router-link>
-            <router-link tag="li" to="/stack-trace-analyzer">Stack Trace</router-link>
-            <router-link tag="li" to="/threadpool-analyzer">ThreadPool</router-link>
-            <router-link tag="li" to="/duplicate-strings-analyzer">Duplicate Strings</router-link>
-            <router-link tag="li" to="/large-objects-analyzer">Large Objects</router-link>
+          <router-link
+            tag="li"
+            :to="{ name: 'exception-analyzer', params: {sessionId:this.$store.state.sessionId }}"
+          >Exception</router-link>
+          <router-link tag="li" :to="{ name: 'stack-trace-analyzer', params: {sessionId:this.$store.state.sessionId }}" >Stack Trace</router-link>
+          <router-link tag="li" :to="{ name: 'threadpool-analyzer', params: {sessionId:this.$store.state.sessionId }}" >ThreadPool</router-link>
+          <router-link tag="li" :to="{ name: 'duplicate-strings-analyzer', params: {sessionId:this.$store.state.sessionId }}" >Duplicate Strings</router-link>
+          <router-link tag="li" :to="{ name: 'large-objects-analyzer', params: {sessionId:this.$store.state.sessionId }}" >Large Objects</router-link>
 
           <!-- <li>
             <a href="#">ADO.Net Best Practices</a>
           </li>
           <li>
             <a href="#">Http Best Practices</a>
-          </li> -->
+          </li>-->
         </ul>
         <router-link right class="nav-item" tag="li" to="/terminal">
           <i class="fa fa-terminal fa-lg"></i> Terminal Session

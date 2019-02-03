@@ -8,14 +8,15 @@ import App from "./App.vue";
 import BootstrapVue from "bootstrap-vue";
 import router from "./router";
 import store from "./store";
-import ECharts from 'vue-echarts' 
+import ECharts from 'vue-echarts'
+import VueProgressBar from 'vue-progressbar'
 
 window.$ = window.jQuery = require('jquery');
 
+Vue.use(VueProgressBar, { color: 'black', failedColor: 'red', thickness: '5px', autoFinish: false })
 Vue.use(BootstrapVue);
 
-Vue.component('v-chart', ECharts)
-
+Vue.component('v-chart', ECharts);
 Vue.config.productionTip = false;
 
 new Vue({

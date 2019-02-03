@@ -1,5 +1,5 @@
 <template>
-  <nav style class="navbar fixed-top navbar-light bg-light navBarCustom">
+  <nav style="z-index:10001" class="navbar fixed-top navbar-light bg-light navBarCustom">
     <a class="navbar-brand navBrandCustom" href="#">
       <img class="logo" :src="require('@/assets/images/logo-mini.png')">
       <span class="logoTitle">kedi analyzer</span>

@@ -31,6 +31,7 @@ import axios from "axios";
 
 export default {
   name: "ThreadList",
+  event: 'on-loaded',
   components: { StackTrace, StackObjects },
   props: {},
   data: function() {
@@ -87,10 +88,12 @@ export default {
         .then(response => {
           this.items = this.prepareThreadDataForPresantation(response.data);
           this.$refs.resultTable.refresh();
+          this.$emit('on-loaded',this);
         })
         .catch(error => {
           console.log(error);
           this.items = [];
+          this.$emit('on-loaded',this);
         });
     },
     prepareThreadDataForPresantation(threadData) {

@@ -48,7 +48,7 @@ export default {
           tdClass: "tableDetailColumn"
         },
         count: {
-          label: "Total In Memory",
+          label: "Count",
           sortable: true,
           tdClass: "tableMinColWidth"
         },

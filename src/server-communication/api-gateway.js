@@ -9,4 +9,9 @@ export default new class ApiGateway {
         return axios
             .get(`http://localhost:9000/api/analyzers/exception-analyzer/${sessionId}`)
     }
+    getThreadPoolDetail(sessionId) {
+        return axios
+            .get(`http://localhost:9000/api/analyzers/threadpool-analyzer/${sessionId}`)
+    }
+
 }

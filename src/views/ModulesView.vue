@@ -3,7 +3,6 @@
     <h5>Modules</h5>
     <hr>
     <TopBar/>
-
     <ModuleList ref="moduleList"/>
   </div>
 </template>
