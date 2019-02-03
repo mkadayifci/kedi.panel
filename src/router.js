@@ -50,7 +50,7 @@ export default new Router({
       component: ModulesView
     },
     {
-      path: "/exception-analyzer",
+      path: "/exception-analyzer/:sessionId",
       name: "exception-analyzer",
       component: ExceptionAnalyzerView
     },
