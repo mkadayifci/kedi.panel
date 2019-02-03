@@ -1,5 +1,6 @@
 
 import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap/dist/js/bootstrap.min.js";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 import "font-awesome/css/font-awesome.css"
 import Vue from "vue";

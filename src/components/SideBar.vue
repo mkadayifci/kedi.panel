@@ -1,7 +1,5 @@
 <template>
   <div class="nav-side-menu">
-    <!-- <div class="brand brand-kedi">
-    </div>-->
     <div class="menu-list">
       <ul id="menu-content" class="menu-content collapse out">
         <router-link right class="nav-item" tag="li" to="/summary">
@@ -16,86 +14,33 @@
         <router-link right class="nav-item" tag="li" to="/memory">
           <i class="fa fa-microchip fa-lg"></i> Memory Stats
         </router-link>
+        <li data-toggle="collapse" data-target="#products" class="collapsed active">
+          <a href="#">
+            <i class="fa fa-paw fa-lg"></i> Analyzers
+            <span class="arrow"></span>
+          </a>
+        </li>
+        <ul style="padding-left:35px" class="sub-menu collapse" id="products">
+            <router-link tag="li" to="/exception-analyzer">Exception</router-link>
+            <router-link tag="li" to="/stack-trace-analyzer">Stack Trace</router-link>
+            <router-link tag="li" to="/threadpool-analyzer">ThreadPool</router-link>
+            <router-link tag="li" to="/duplicate-strings-analyzer">Duplicate Strings</router-link>
+            <router-link tag="li" to="/large-objects-analyzer">Large Objects</router-link>
+
+          <!-- <li>
+            <a href="#">ADO.Net Best Practices</a>
+          </li>
+          <li>
+            <a href="#">Http Best Practices</a>
+          </li> -->
+        </ul>
         <router-link right class="nav-item" tag="li" to="/terminal">
           <i class="fa fa-terminal fa-lg"></i> Terminal Session
         </router-link>
-
-        <!-- <li data-toggle="collapse" data-target="#products" class="collapsed active">
-          <a href="#">
-            <i class="fa fa-gift fa-lg"></i> UI Elements
-            <span class="arrow"></span>
-          </a>
-        </li>
-        <ul class="sub-menu collapse" id="products">
-          <li class="active">
-            <a href="#">CSS3 Animation</a>
-          </li>
-          <li>
-            <a href="#">General</a>
-          </li>
-          <li>
-            <a href="#">Buttons</a>
-          </li>
-          <li>
-            <a href="#">Tabs &amp; Accordions</a>
-          </li>
-          <li>
-            <a href="#">Typography</a>
-          </li>
-          <li>
-            <a href="#">FontAwesome</a>
-          </li>
-          <li>
-            <a href="#">Slider</a>
-          </li>
-          <li>
-            <a href="#">Panels</a>
-          </li>
-          <li>
-            <a href="#">Widgets</a>
-          </li>
-          <li>
-            <a href="#">Bootstrap Model</a>
-          </li>
-        </ul>
-        <li data-toggle="collapse" data-target="#service" class="collapsed">
-          <a href="#">
-            <i class="fa fa-globe fa-lg"></i> Services
-            <span class="arrow"></span>
-          </a>
-        </li>
-        <ul class="sub-menu collapse" id="service">
-          <li>New Service 1</li>
-          <li>New Service 2</li>
-          <li>New Service 3</li>
-        </ul>
-
-        <li data-toggle="collapse" data-target="#new" class="collapsed">
-          <a href="#">
-            <i class="fa fa-car fa-lg"></i> New
-            <span class="arrow"></span>
-          </a>
-        </li>
-        <ul class="sub-menu collapse" id="new">
-          <li>New New 1</li>
-          <li>New New 2</li>
-          <li>New New 3</li>
-        </ul>
-        <li>
-          <a href="#">
-            <i class="fa fa-user fa-lg"></i> Profile
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="fa fa-users fa-lg"></i> Users
-          </a>
-        </li>-->
       </ul>
     </div>
   </div>
 </template>
-
 
 <style>
 .nav-side-menu {
@@ -130,19 +75,6 @@
   border-radius: 5px 0px 0px 5px;
   line-height: 35px;
   cursor: pointer;
-  /*    
-    .collapsed{
-       .arrow:before{
-                 font-family: FontAwesome;
-                 content: "\f053";
-                 display: inline-block;
-                 padding-left:10px;
-                 padding-right: 10px;
-                 vertical-align: middle;
-                 float:right;
-            }
-     }
-*/
 }
 .nav-side-menu ul :not(collapsed) .arrow:before,
 .nav-side-menu li :not(collapsed) .arrow:before {
@@ -156,21 +88,21 @@
 }
 .nav-side-menu ul .router-link-active,
 .nav-side-menu li .router-link-active {
-  border-left: 3px solid #d19b3d;
-  background-color: #d19b3d;
+  border-left: 3px solid #d19b3d !important;
+  background-color: #d19b3d !important;
   color: black;
 }
 .nav-side-menu ul .sub-menu li.active,
 .nav-side-menu li .sub-menu li.active {
-  color: #d19b3d;
+  color: #d19b3d !important;
 }
 .nav-side-menu ul .sub-menu li.active a,
 .nav-side-menu li .sub-menu li.active a {
-  color: #d19b3d;
+  color: #d19b3d !important;
 }
 .nav-side-menu ul .sub-menu li,
 .nav-side-menu li .sub-menu li {
-  background-color: #181c20;
+  background-color: #181818;
   border: none;
   line-height: 28px;
   border-bottom: 1px solid #181818;
@@ -199,9 +131,9 @@
   color: #ffffff;
 }
 .nav-side-menu li a i {
-  padding-left: 10px;
+  /* padding-left: 10px;
   width: 20px;
-  padding-right: 30px;
+  padding-right: 30px; */
 }
 
 .nav-side-menu li i {

@@ -7,6 +7,13 @@ import ObjectView from "./views/ObjectView.vue";
 import TerminalView from "./views/TerminalView.vue";
 import MemoryView from "./views/MemoryView.vue";
 
+import ExceptionAnalyzerView from "./views/Analyzers/ExceptionAnalyzerView.vue";
+import StackTraceAnalyzerView from "./views/Analyzers/StackTraceAnalyzerView.vue";
+import DuplicateStringsAnalyzerView from "./views/Analyzers/DuplicateStringsAnalyzerView.vue";
+import ThreadPoolAnalyzerView from "./views/Analyzers/ThreadPoolAnalyzerView.vue";
+import LargeObjectsAnalyzerView from "./views/Analyzers/LargeObjectsAnalyzerView.vue";
+
+
 Vue.use(Router);
 
 export default new Router({
@@ -41,7 +48,32 @@ export default new Router({
       path: "/modules",
       name: "moduleView",
       component: ModulesView
+    },
+    {
+      path: "/exception-analyzer",
+      name: "exception-analyzer",
+      component: ExceptionAnalyzerView
+    },
+    {
+      path: "/stack-trace-analyzer",
+      name: "stack-trace-analyzer",
+      component: StackTraceAnalyzerView
+    },
+    {
+      path: "/duplicate-strings-analyzer",
+      name: "duplicate-strings-analyzer",
+      component: DuplicateStringsAnalyzerView
+    },
+    {
+      path: "/threadpool-analyzer",
+      name: "threadpool-analyzer",
+      component: ThreadPoolAnalyzerView
+    },
+    {
+      path: "/large-objects-analyzer",
+      name: "large-objects-analyzer",
+      component: LargeObjectsAnalyzerView
     }
-
+    
   ]
 });

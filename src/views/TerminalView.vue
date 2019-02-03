@@ -1,4 +1,3 @@
-
 <template>
   <div class="container-fluid pt-80">
     <TopBar/>
@@ -6,7 +5,7 @@
   </div>
 </template>
 
- <script>
+<script>
 import TopBar from "@/components/TopBar.vue";
 import Terminal from "@/3rd-party/termlib/index";
 
@@ -21,7 +20,7 @@ export default {
   mounted: function() {
     var term = new Terminal({
       handler: termHandler,
-      greeting: "*** This is Terminal 1 ***",
+      greeting: "Debugger Session Started - kedi",
       termDiv: "container",
       crsrBlockMode: true,
       wrapping: true,
@@ -75,6 +74,17 @@ export default {
   width: 100%;
   height: 100%;
 }
+.term {
+  font-family: "Ubuntu Mono", "Menlo Regular", "Lucida Console", Monaco;
+  font-size: 16px;
+  letter-spacing: 1px;
+  color: white;
+  background: none repeat scroll 0% 0% transparent;
+}
+.termReverse {
+  color: black;
+  background: #33d011;
+}
 
 /* .term {
   font-family: courier, fixed, swiss, sans-serif;
@@ -89,12 +99,6 @@ export default {
 }
 
 
-.term {
-  font-family: "Menlo Regular", "Lucida Console", Monaco;
-  font-size: 12px;
-  color: white; 
-  background: none repeat scroll 0% 0% transparent;
-}
 
 .termReverse {
   color: #111111;
@@ -139,7 +143,7 @@ a.termopen:hover {
 */
 #container a.termopen:active {
   text-decoration: none;
-  color: #222222;
+  color: black;
   background: #dddddd;
 }
 </style>

@@ -18,6 +18,7 @@
 </template>
 <script>
 require('typeface-open-sans');
+require('typeface-ubuntu-mono');
 import SideBar from "@/components/SideBar.vue";
 import TopBar from "@/components/TopBar.vue";
 
@@ -34,6 +35,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   font-size: 12px;
   color: #111111;
+  
 }
 .pt-80{
   padding-top: 80px !important;

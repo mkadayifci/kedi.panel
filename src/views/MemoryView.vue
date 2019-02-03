@@ -19,8 +19,8 @@ export default {
   data: function() {
     let data = {
       legendData: ["Seee1","Seee2"],
-      seriesData: [{ name: "Seri1", value: 50 }, { name: "Seri2", value: 20 }],
-      selected: {Seri1:true,Seri2:true}
+      seriesData: [{ name: "Seee1", value: 50 }, { name: "Seee2", value: 20 }],
+      selected: {Seee1:true,Seee2:true}
     };
 
    
@@ -42,7 +42,6 @@ export default {
           top: 20,
           bottom: 20,
           data: data.legendData,
-
           selected: data.selected
         },
         series: [
