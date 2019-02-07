@@ -54,7 +54,7 @@ export default {
     this.signalRProxy = connection.createHubProxy("SignalRHub");
     this.signalRProxy.on("ReceiveMessage", function(message) {
       term.write(message);
-      term.prompt();
+      //term.prompt();
     });
 
     connection.start().done(function() {});

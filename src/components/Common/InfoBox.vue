@@ -5,7 +5,7 @@
     </div>
     <div class="content">
       <div class="text">{{title}}</div>
-      <div class="number">{{text}}</div>
+      <div class="number" v-html=text></div>
     </div>
   </div>
 </template>

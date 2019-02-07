@@ -41,4 +41,12 @@ export default {
 .pt-80{
   padding-top: 80px !important;
 }
+
+.tableDetailColumn {
+  width: 1px !important;
+}
+
+.tbodyOuterBeige {
+  background-color: beige;
+}
 </style>

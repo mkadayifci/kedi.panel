@@ -37,7 +37,7 @@
             <a href="#">Http Best Practices</a>
           </li>-->
         </ul>
-        <router-link right class="nav-item" tag="li" to="/terminal">
+        <router-link style="display:none" right class="nav-item" tag="li" to="/terminal">
           <i class="fa fa-terminal fa-lg"></i> Terminal Session
         </router-link>
       </ul>

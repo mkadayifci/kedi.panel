@@ -60,7 +60,7 @@ export default new Router({
       component: StackTraceAnalyzerView
     },
     {
-      path: "/duplicate-strings-analyzer",
+      path: "/duplicate-strings-analyzer/:sessionId",
       name: "duplicate-strings-analyzer",
       component: DuplicateStringsAnalyzerView
     },

@@ -35,7 +35,23 @@ ObjectPointer = objPtr,
                 Values = new List<DateTime>(),
     type.-->
     <template>
-      <b-table hover :items="objectDetail.members" class="table b-table table-hover table-sm"></b-table>
+      <b-table
+        hover
+        :items="objectDetail.members"
+        :fields="fields"
+        class="table b-table table-hover table-sm"
+      >
+        <template slot="value" slot-scope="data">
+          <router-link v-if="data.item.isObjectReference===true && data.item.elementType!=='String' && data.item.value !== 0 "
+            right
+            class="nav-item"
+            tag="a"
+            :to="getRouterLink(data.item.value)"
+          >{{data.item.value}}</router-link>
+
+          <span v-if="data.item.isObjectReference===false ||  data.item.elementType==='String'">{{data.item.value}}</span>
+        </template>
+      </b-table>
     </template>
   </div>
 </template>
@@ -47,8 +63,34 @@ export default {
   components: { TopBar },
   data: () => {
     return {
-      objectDetail: {}
+      objectDetail: {},
+      fields: {
+        name: {
+          label: "Name"
+        },
+        offset: {
+          label: "Offset",
+          sortable: false
+        },
+        fieldType: {
+          label: "Type",
+          sortable: false
+        },
+        address: {
+          label: "Address",
+          sortable: true
+        },
+        value: {
+          label: "Value",
+          sortable: true
+        }
+      }
     };
+  },
+  methods: {
+    getRouterLink: function(address) {
+      return `/object/${address}`;
+    }
   },
   mounted() {
     apiGateway

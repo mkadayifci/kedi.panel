@@ -5,7 +5,16 @@
       <div class="card-header">Header</div>
       <div class="card-body">
         <h5 class="card-title">{{summary.sourceName}}</h5>
-        <p class="card-text">{{summary.version}}</p>
+        <p class="card-text">Version: {{summary.version}}</p>
+        <p class="card-text">Flavor: {{summary.flavor}}</p>
+        <p class="card-text">DAC Info: {{summary.dacInfo}}</p>
+        <p class="card-text">Architecture: {{summary.targetArchitecture}}</p>
+        <p class="card-text">Is64Bit: {{summary.is64Bit}}</p>
+        <p class="card-text">GC Mode: {{summary.gcMode}}</p>
+        <p class="card-text">Thread Count: {{summary.threadCount}}</p>
+        <p class="card-text">Heap Count: {{summary.heapCount}}</p>
+        <p class="card-text">Is Minidump: {{summary.isMinidump}}</p>
+
       </div>
     </div>
   </div>
@@ -16,7 +25,7 @@ import TopBar from "@/components/TopBar.vue";
 import axios from "axios";
 
 export default {
-  name: "summary",
+  name: "summaryView",
   components: {TopBar},
   data: function() {
     return {

@@ -74,7 +74,12 @@ export default {
           formatter: value => {
             return timeHelper.msToTime(value);
           }
-        }
+        },
+        lockCount: {
+          label: "Locks",
+          sortable: true
+        },
+        
       }
     };
   },
@@ -118,7 +123,5 @@ export default {
   color: gray;
 }
 
-.tableDetailColumn {
-  width: 1px !important;
-}
+
 </style>

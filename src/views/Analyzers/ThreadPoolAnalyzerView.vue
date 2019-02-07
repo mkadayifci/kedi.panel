@@ -55,7 +55,7 @@ export default {
       return `${this.threadPoolDetail.cpuUtilization}%`;
     },
     threadBoxText: function() {
-      return `Min: ${this.threadPoolDetail.minThreads}, Max: ${
+      return `Min: ${this.threadPoolDetail.minThreads}, <br/> Manx: ${
         this.threadPoolDetail.maxThreads
       }`;
     },

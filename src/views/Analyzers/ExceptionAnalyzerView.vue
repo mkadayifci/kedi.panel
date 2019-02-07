@@ -9,7 +9,9 @@
         small
         hover
         outlined
-        tbody-class="tbodyOuter"
+        sort-by="count"
+        :sort-desc="sortDesc"
+        tbody-class="tbodyOuterBeige"
         thead-class="innerHead"
         :fields="combinedTableFields"
         :items="combinedItems"
@@ -40,6 +42,7 @@ export default {
   components: { TopBar, ExceptionList },
   data: function() {
     return {
+      sortDesc:true,
       combinedItems: [],
       items: [],
       combinedTableFields: {
@@ -115,9 +118,7 @@ export default {
   background-color: #181818;
   color: white;
 }
-.tbodyOuter {
-  background-color: beige;
-}
+
 .tbodyInner {
   font-style: italic !important;
 }

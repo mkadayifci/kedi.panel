@@ -9,6 +9,10 @@ export default new class ApiGateway {
         return axios
             .get(`http://localhost:9000/api/analyzers/exception-analyzer/${sessionId}`)
     }
+    getDuplicateStrings(sessionId) {
+        return axios
+            .get(`http://localhost:9000/api/analyzers/duplicate-strings-analyzer/${sessionId}`)
+    }
     getThreadPoolDetail(sessionId) {
         return axios
             .get(`http://localhost:9000/api/analyzers/threadpool-analyzer/${sessionId}`)
