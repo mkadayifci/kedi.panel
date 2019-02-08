@@ -34,24 +34,9 @@ export default {
   font-family: "Open Sans","Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 12px;
+  font-size: 13px;
   color: #111111;
   
-}
-.pt-80{
-  padding-top: 80px !important;
-}
-
-.tableDetailColumn {
-  width: 1px !important;
-}
-
-.tbodyOuterBeige {
-  background-color: beige;
-}
-.tHead {
-  background-color: #181818;
-  color: white;
 }
 
 

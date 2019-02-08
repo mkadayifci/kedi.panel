@@ -5,7 +5,12 @@
         <router-link right class="nav-item" tag="li" to="/summary">
           <i class="fa fa-file-text fa-lg"></i> Summary
         </router-link>
-        <router-link right class="nav-item" tag="li" to="/modules">
+        <router-link
+          right
+          class="nav-item"
+          tag="li"
+          :to="{ name: 'modules', params: {sessionId:this.$store.state.sessionId }}"
+        >
           <i class="fa fa-cubes fa-lg"></i> Modules
         </router-link>
         <router-link
@@ -16,7 +21,12 @@
         >
           <i class="fa fa-cogs fa-lg"></i> Threads
         </router-link>
-        <router-link right class="nav-item" tag="li":to="{ name: 'memory', params: {sessionId:this.$store.state.sessionId }}">
+        <router-link
+          right
+          class="nav-item"
+          tag="li"
+          :to="{ name: 'memory', params: {sessionId:this.$store.state.sessionId }}"
+        >
           <i class="fa fa-microchip fa-lg"></i> Memory Stats
         </router-link>
         <li data-toggle="collapse" data-target="#products" class="collapsed active">
@@ -58,6 +68,16 @@
           <i class="fa fa-terminal fa-lg"></i> Terminal Session
         </router-link>
       </ul>
+    </div>
+    <div class="fixed-bottom" style="padding-left: 34px;padding-bottom:5px;font-size:0.75rem">
+      <div class="row">
+        <span>website :&nbsp;&nbsp;</span>
+        <a style="color:gray" target="_blank" href="https://www.kedi-analyzer.com">kedi-analyzer.com</a>
+      </div>
+      <div class="row">
+        <span>e-mail :&nbsp;&nbsp;</span>
+        <a style="color:gray" href="mailto:mehmet@kadayifci.ch">mehmet@kadayifci.ch</a>
+      </div>
     </div>
   </div>
 </template>

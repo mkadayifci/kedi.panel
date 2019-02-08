@@ -87,6 +87,26 @@ export default {
         lockCount: {
           label: "Locks",
           sortable: true
+        },
+        isAlive: {
+          label: "Alive",
+          sortable: true
+        },
+        isBackground: {
+          label: "Background",
+          sortable: true
+        },
+        threadingModel: {
+          label: "Model",
+          sortable: true
+        },
+        specialRole: {
+          label: "Special Role",
+          sortable: true
+        },
+        currentExceptionType: {
+          label: "Exception",
+          sortable: true
         }
       }
     };

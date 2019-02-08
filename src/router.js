@@ -45,8 +45,8 @@ export default new Router({
       component: ObjectView
     },
     {
-      path: "/modules",
-      name: "moduleView",
+      path: "/modules/:sessionId",
+      name: "modules",
       component: ModulesView
     },
     {

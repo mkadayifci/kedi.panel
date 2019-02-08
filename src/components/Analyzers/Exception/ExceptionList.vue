@@ -1,29 +1,25 @@
 <template>
   <div>
     <b-table style="white-space: pre" small hover :fields="fields" :items="items">
-
       <template slot="objectPointer" slot-scope="data">
         <router-link
           right
           class="nav-item"
           tag="a"
-          :to="getRouterLink(data.item.objectPointer)"
+          target="_blank"
+          :to="{ name: 'object', params: {sessionId:$route.params.sessionId, objectPointer:data.item.objectPointer }}"
         >{{data.item.objectPointer}}</router-link>
       </template>
     </b-table>
   </div>
 </template>
 <script>
-
 export default {
   name: "ExceptionList",
   props: ["items"],
   methods: {
     tableRowDetailToggle: function(row) {
       row.toggleDetails();
-    },
-    getRouterLink: function(address) {
-      return `/object/${address}`;
     }
   },
   data: function() {
@@ -32,28 +28,28 @@ export default {
         objectPointer: {
           label: "Address",
           sortable: true,
-          tdClass:"columnWidth"
+          tdClass: "columnWidth"
         },
         typeName: {
           label: "Exception Type",
           sortable: true,
-          tdClass:"columnWidth"
+          tdClass: "columnWidth"
         },
         message: {
           label: "Message",
           sortable: true,
-          tdClass:"columnWidth"
+          tdClass: "columnWidth"
         },
         method: {
           label: "Method",
           sortable: true,
-          tdClass:"columnWidth"
+          tdClass: "columnWidth"
         },
-        
+
         hResult: {
           label: "HResult",
           sortable: true,
-          tdClass:"columnWidth"
+          tdClass: "columnWidth"
         }
       }
     };
@@ -61,9 +57,9 @@ export default {
 };
 </script>
 <style>
-.columnWidth{
-    width: 1px;
-    padding-right: 10px !important;
+.columnWidth {
+  width: 1px;
+  padding-right: 10px !important;
 }
 </style>
 
