@@ -1,6 +1,15 @@
 <template>
   <div>
-    <b-table ref="resultTable" :per-page="pageSize" hover small :items="items" :fields="fields">
+    <b-table
+      ref="resultTable"
+      :per-page="pageSize"
+      hover
+      small
+      :items="items"
+      :fields="fields"
+      tbody-class="tbodyOuterBeige"
+      thead-class="tHead"
+    >
       <template slot="show_details" slot-scope="row">
         <i
           @click.stop="tableRowDetailToggle(row)"
@@ -31,7 +40,7 @@ import axios from "axios";
 
 export default {
   name: "ThreadList",
-  event: 'on-loaded',
+  event: "on-loaded",
   components: { StackTrace, StackObjects },
   props: {},
   data: function() {
@@ -78,8 +87,7 @@ export default {
         lockCount: {
           label: "Locks",
           sortable: true
-        },
-        
+        }
       }
     };
   },
@@ -93,12 +101,12 @@ export default {
         .then(response => {
           this.items = this.prepareThreadDataForPresantation(response.data);
           this.$refs.resultTable.refresh();
-          this.$emit('on-loaded',this);
+          this.$emit("on-loaded", this);
         })
         .catch(error => {
           console.log(error);
           this.items = [];
-          this.$emit('on-loaded',this);
+          this.$emit("on-loaded", this);
         });
     },
     prepareThreadDataForPresantation(threadData) {
@@ -122,6 +130,4 @@ export default {
   cursor: pointer;
   color: gray;
 }
-
-
 </style>

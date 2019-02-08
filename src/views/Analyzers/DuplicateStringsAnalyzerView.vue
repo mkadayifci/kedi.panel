@@ -31,7 +31,7 @@
               class="nav-item"
               tag="a"
               target="_blank"
-              :to="{ name: 'object', params: {objectPointer:item.value.address }}"
+              :to="{ name: 'object', params: {sessionId:$route.params.sessionId, objectPointer:item.value.address }}"
             >{{item.value.address}}</router-link>
           </div>
         </div>

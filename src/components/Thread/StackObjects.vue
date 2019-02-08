@@ -4,9 +4,13 @@
     <template>
       <b-table hover :items="items" :fields="fields">
         <template slot="objectAddress" slot-scope="data">
-          <router-link right class="nav-item" tag="a" :to="getRouterLink(data.item.objectAddress)">
-            {{data.item.objectAddress}}
-          </router-link>
+          <router-link
+            right
+            class="nav-item"
+            tag="a"
+            target="_blank"
+            :to="{ name: 'object', params: {sessionId:$route.params.sessionId, objectPointer:data.item.objectAddress }}"
+          >{{data.item.objectAddress}}</router-link>
         </template>
       </b-table>
     </template>
@@ -17,11 +21,7 @@ import numberHelper from "@/helpers/number-helper";
 export default {
   name: "StackObjects",
   props: ["items"],
-  methods: {
-    getRouterLink: function (address){
-      return `/object/${address}`
-    }
-  },
+  methods: {},
   data: function() {
     return {
       fields: {

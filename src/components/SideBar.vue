@@ -8,10 +8,15 @@
         <router-link right class="nav-item" tag="li" to="/modules">
           <i class="fa fa-cubes fa-lg"></i> Modules
         </router-link>
-        <router-link right class="nav-item" tag="li" to="/threads">
+        <router-link
+          right
+          class="nav-item"
+          tag="li"
+          :to="{ name: 'threads', params: {sessionId:this.$store.state.sessionId }}"
+        >
           <i class="fa fa-cogs fa-lg"></i> Threads
         </router-link>
-        <router-link right class="nav-item" tag="li" to="/memory">
+        <router-link right class="nav-item" tag="li":to="{ name: 'memory', params: {sessionId:this.$store.state.sessionId }}">
           <i class="fa fa-microchip fa-lg"></i> Memory Stats
         </router-link>
         <li data-toggle="collapse" data-target="#products" class="collapsed active">
@@ -20,15 +25,27 @@
             <span class="arrow"></span>
           </a>
         </li>
-        <ul style="padding-left:35px" class="sub-menu collapse" id="products">
+        <ul style="padding-left:35px" class="sub-menu collapse show" id="products">
           <router-link
             tag="li"
             :to="{ name: 'exception-analyzer', params: {sessionId:this.$store.state.sessionId }}"
           >Exception</router-link>
-          <router-link tag="li" :to="{ name: 'stack-trace-analyzer', params: {sessionId:this.$store.state.sessionId }}" >Stack Trace</router-link>
-          <router-link tag="li" :to="{ name: 'threadpool-analyzer', params: {sessionId:this.$store.state.sessionId }}" >ThreadPool</router-link>
-          <router-link tag="li" :to="{ name: 'duplicate-strings-analyzer', params: {sessionId:this.$store.state.sessionId }}" >Duplicate Strings</router-link>
-          <router-link tag="li" :to="{ name: 'large-objects-analyzer', params: {sessionId:this.$store.state.sessionId }}" >Large Objects</router-link>
+          <router-link
+            tag="li"
+            :to="{ name: 'stack-trace-analyzer', params: {sessionId:this.$store.state.sessionId }}"
+          >Stack Trace</router-link>
+          <router-link
+            tag="li"
+            :to="{ name: 'threadpool-analyzer', params: {sessionId:this.$store.state.sessionId }}"
+          >ThreadPool</router-link>
+          <router-link
+            tag="li"
+            :to="{ name: 'duplicate-strings-analyzer', params: {sessionId:this.$store.state.sessionId }}"
+          >Duplicate Strings</router-link>
+          <router-link
+            tag="li"
+            :to="{ name: 'large-objects-analyzer', params: {sessionId:this.$store.state.sessionId }}"
+          >Large Objects</router-link>
 
           <!-- <li>
             <a href="#">ADO.Net Best Practices</a>

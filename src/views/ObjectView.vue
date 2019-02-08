@@ -42,14 +42,18 @@ ObjectPointer = objPtr,
         class="table b-table table-hover table-sm"
       >
         <template slot="value" slot-scope="data">
-          <router-link v-if="data.item.isObjectReference===true && data.item.elementType!=='String' && data.item.value !== 0 "
+          <router-link
+            v-if="data.item.isObjectReference===true && data.item.elementType!=='String' && data.item.value !== 0 "
             right
             class="nav-item"
             tag="a"
-            :to="getRouterLink(data.item.value)"
+            target="_blank"
+            :to="{ name: 'object', params: {sessionId:$route.params.sessionId, objectPointer:data.item.value }}"
           >{{data.item.value}}</router-link>
 
-          <span v-if="data.item.isObjectReference===false ||  data.item.elementType==='String'">{{data.item.value}}</span>
+          <span
+            v-if="data.item.isObjectReference===false ||  data.item.elementType==='String'"
+          >{{data.item.value}}</span>
         </template>
       </b-table>
     </template>
@@ -87,14 +91,10 @@ export default {
       }
     };
   },
-  methods: {
-    getRouterLink: function(address) {
-      return `/object/${address}`;
-    }
-  },
+  methods: {},
   mounted() {
     apiGateway
-      .getObject(this.$route.params.objectPointer)
+      .getObject(this.$route.params.sessionId, this.$route.params.objectPointer)
       .then(response => {
         this.objectDetail = response.data;
       })

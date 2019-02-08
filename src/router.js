@@ -25,12 +25,12 @@ export default new Router({
       alias: '/'
     },
     {
-      path: "/threads",
+      path: "/threads/:sessionId",
       name: "threads",
       component: ThreadsView
     },
     {
-      path: "/memory",
+      path: "/memory/:sessionId",
       name: "memory",
       component: MemoryView
     },
@@ -40,7 +40,7 @@ export default new Router({
       component: TerminalView
     },
     {
-      path: "/object/:objectPointer",
+      path: "/object/:sessionId/:objectPointer",
       name: "object",
       component: ObjectView
     },

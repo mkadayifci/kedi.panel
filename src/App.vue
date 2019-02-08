@@ -49,4 +49,10 @@ export default {
 .tbodyOuterBeige {
   background-color: beige;
 }
+.tHead {
+  background-color: #181818;
+  color: white;
+}
+
+
 </style>
