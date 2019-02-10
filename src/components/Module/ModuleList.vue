@@ -24,7 +24,11 @@
       :key="moduleItem.name"
     >
       <div class="card-body" style="padding:0px !important">
-        <i style="padding-right: 10px;vertical-align: middle;margin-top: -6px;" class="fa fa-th-large" aria-hidden="true"></i>
+        <i
+          style="padding-right: 10px;vertical-align: middle;margin-top: -6px;"
+          class="fa fa-th-large"
+          aria-hidden="true"
+        ></i>
         <h5 class="card-title d-inline-block">{{moduleItem.fileName}}</h5>
         <h6 class="card-subtitle mb-2 text-muted">{{moduleItem.assemblyName}}</h6>
         <p class="card-text">
@@ -57,6 +61,7 @@ export default {
   },
   methods: {
     list: function() {
+      this.$loadingIndicatorHelper.show(this);
       apiGateway
         .getModuleList(this.$route.params.sessionId)
         .then(response => {
@@ -64,9 +69,11 @@ export default {
           this.debugModeModuleCount = response.data.filter(
             module => module.isInDebugMode
           ).length;
+          this.$loadingIndicatorHelper.hide(this);
         })
         .catch(error => {
           this.modules = [];
+          this.$loadingIndicatorHelper.hide(this);
         });
     }
   }

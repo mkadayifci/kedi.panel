@@ -36,7 +36,7 @@ import StackTrace from "@/components/Thread/StackTrace.vue";
 import StackObjects from "@/components/Thread/StackObjects.vue";
 import timeHelper from "@/helpers/time-helper";
 import numberHelper from "@/helpers/number-helper";
-import axios from "axios";
+import apiGateway from "@/server-communication/api-gateway";
 
 export default {
   name: "ThreadList",
@@ -45,7 +45,6 @@ export default {
   props: {},
   data: function() {
     return {
-      server_url: "http://localhost:9000/api",
       pageSize: 100,
       isTableBusy: false,
       items: Array,
@@ -116,15 +115,14 @@ export default {
       row.toggleDetails();
     },
     list: function() {
-      return axios
-        .get(this.server_url + "/threads/30230bf96a884830a0b96805cf173717")
-        .then(response => {
+      apiGateway
+        .getThreadsList(this.$route.params.sessionId)
+        .then(response => {          
           this.items = this.prepareThreadDataForPresantation(response.data);
           this.$refs.resultTable.refresh();
           this.$emit("on-loaded", this);
         })
         .catch(error => {
-          console.log(error);
           this.items = [];
           this.$emit("on-loaded", this);
         });

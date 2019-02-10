@@ -19,8 +19,8 @@ Vue.use(Router);
 export default new Router({
   routes: [
     {
-      path: "/summary",
-      name: "summaryView",
+      path: "/summary/:sessionId",
+      name: "summary",
       component: SummaryView,
       alias: '/'
     },
@@ -35,7 +35,7 @@ export default new Router({
       component: MemoryView
     },
     {
-      path: "/terminal",
+      path: "/terminal/:sessionId",
       name: "terminal",
       component: TerminalView
     },
@@ -55,7 +55,7 @@ export default new Router({
       component: ExceptionAnalyzerView
     },
     {
-      path: "/stack-trace-analyzer",
+      path: "/stack-trace-analyzer/:sessionId",
       name: "stack-trace-analyzer",
       component: StackTraceAnalyzerView
     },

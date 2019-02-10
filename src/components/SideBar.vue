@@ -2,14 +2,19 @@
   <div class="nav-side-menu">
     <div class="menu-list">
       <ul id="menu-content" class="menu-content collapse out">
-        <router-link right class="nav-item" tag="li" to="/summary">
+        <router-link
+          right
+          class="nav-item"
+          tag="li"
+          :to="{ name: 'summary', params: {sessionId:this.$route.params.sessionId }}"
+        >
           <i class="fa fa-file-text fa-lg"></i> Summary
         </router-link>
         <router-link
           right
           class="nav-item"
           tag="li"
-          :to="{ name: 'modules', params: {sessionId:this.$store.state.sessionId }}"
+          :to="{ name: 'modules', params: {sessionId:this.$route.params.sessionId }}"
         >
           <i class="fa fa-cubes fa-lg"></i> Modules
         </router-link>
@@ -17,7 +22,7 @@
           right
           class="nav-item"
           tag="li"
-          :to="{ name: 'threads', params: {sessionId:this.$store.state.sessionId }}"
+          :to="{ name: 'threads', params: {sessionId:this.$route.params.sessionId }}"
         >
           <i class="fa fa-cogs fa-lg"></i> Threads
         </router-link>
@@ -25,7 +30,7 @@
           right
           class="nav-item"
           tag="li"
-          :to="{ name: 'memory', params: {sessionId:this.$store.state.sessionId }}"
+          :to="{ name: 'memory', params: {sessionId:this.$route.params.sessionId }}"
         >
           <i class="fa fa-microchip fa-lg"></i> Memory Stats
         </router-link>
@@ -38,23 +43,23 @@
         <ul style="padding-left:35px" class="sub-menu collapse show" id="products">
           <router-link
             tag="li"
-            :to="{ name: 'exception-analyzer', params: {sessionId:this.$store.state.sessionId }}"
+            :to="{ name: 'exception-analyzer', params: {sessionId:this.$route.params.sessionId }}"
           >Exception</router-link>
           <router-link
             tag="li"
-            :to="{ name: 'stack-trace-analyzer', params: {sessionId:this.$store.state.sessionId }}"
+            :to="{ name: 'stack-trace-analyzer', params: {sessionId:this.$route.params.sessionId }}"
           >Stack Trace</router-link>
           <router-link
             tag="li"
-            :to="{ name: 'threadpool-analyzer', params: {sessionId:this.$store.state.sessionId }}"
+            :to="{ name: 'threadpool-analyzer', params: {sessionId:this.$route.params.sessionId }}"
           >ThreadPool</router-link>
           <router-link
             tag="li"
-            :to="{ name: 'duplicate-strings-analyzer', params: {sessionId:this.$store.state.sessionId }}"
+            :to="{ name: 'duplicate-strings-analyzer', params: {sessionId:this.$route.params.sessionId }}"
           >Duplicate Strings</router-link>
           <router-link
             tag="li"
-            :to="{ name: 'large-objects-analyzer', params: {sessionId:this.$store.state.sessionId }}"
+            :to="{ name: 'large-objects-analyzer', params: {sessionId:this.$route.params.sessionId }}"
           >Large Objects</router-link>
 
           <!-- <li>
@@ -64,7 +69,13 @@
             <a href="#">Http Best Practices</a>
           </li>-->
         </ul>
-        <router-link style="display:none" right class="nav-item" tag="li" to="/terminal">
+        <router-link
+          style="display:none"
+          right
+          class="nav-item"
+          tag="li"
+          :to="{ name: 'terminal', params: {sessionId:this.$route.params.sessionId }}"
+        >
           <i class="fa fa-terminal fa-lg"></i> Terminal Session
         </router-link>
       </ul>

@@ -20,6 +20,10 @@ export default new class ApiGateway {
         return axios
             .get(`${this.hostProtocolSection}${this.urlPrefix}/analyzers/threadpool-analyzer/${sessionId}`);
     }
+    getStackTraceAnalyze(sessionId) {
+        return axios
+            .get(`${this.hostProtocolSection}${this.urlPrefix}/analyzers/stack-trace-analyzer/${sessionId}`);
+    }
     getMemoryStats(sessionId) {
         return axios
             .get(`${this.hostProtocolSection}${this.urlPrefix}/memory/${sessionId}`);
@@ -28,4 +32,16 @@ export default new class ApiGateway {
         return axios
             .get(`${this.hostProtocolSection}${this.urlPrefix}/modules/${sessionId}`);
     }
+    getThreadsList(sessionId) {
+        return axios
+            .get(`${this.hostProtocolSection}${this.urlPrefix}/threads/${sessionId}`);
+    }
+    getSummary(sessionId) {
+        return axios
+            .get(`${this.hostProtocolSection}${this.urlPrefix}/summary/${sessionId}`);
+    }
+
+    
 }
+
+

@@ -13,4 +13,6 @@
     background-color: #181818;
     color: white;
   }
-  
+  .tableMinColWidth {
+    width: 1px !important;
+  }

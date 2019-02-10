@@ -5,8 +5,6 @@
     <h5>Memory</h5>
     <hr>
     <TopBar/>
-
-
     <ul class="nav nav-tabs" role="tablist">
       <li class="nav-item">
         <a
@@ -14,7 +12,7 @@
           href="#profile"
           role="tab"
           data-toggle="tab"
-        >Type stats for application</a>
+        >Type statistics for application</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#buzz" role="tab" data-toggle="tab">Heap segment details</a>
@@ -64,6 +62,7 @@
 import TopBar from "@/components/TopBar.vue";
 import apiGateway from "@/server-communication/api-gateway";
 import numberHelper from "@/helpers/number-helper";
+
 import "echarts/lib/chart/pie";
 import "echarts/lib/component/legend";
 import "echarts/lib/component/legendScroll";
@@ -159,17 +158,19 @@ export default {
       }
     };
   },
-  mounted: function() {
+  mounted () {
+    this.$loadingIndicatorHelper.show(this);
     apiGateway
       .getMemoryStats(this.$route.params.sessionId)
       .then(response => {
         this.statsItems = this.generatePresentationData(
           response.data.statsByType
         );
-        console.log(this.statsItems);
+        this.$loadingIndicatorHelper.hide(this);
       })
       .catch(error => {
         this.statsItems = [];
+        this.$loadingIndicatorHelper.hide(this);
       });
   }
 };

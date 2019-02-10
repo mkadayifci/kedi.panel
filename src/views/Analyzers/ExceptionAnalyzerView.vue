@@ -42,7 +42,7 @@ export default {
   components: { TopBar, ExceptionList },
   data: function() {
     return {
-      sortDesc:true,
+      sortDesc: true,
       combinedItems: [],
       items: [],
       combinedTableFields: {
@@ -97,22 +97,26 @@ export default {
     }
   },
   mounted() {
+    this.$loadingIndicatorHelper.show(this);
+
     apiGateway
       .getExceptionObjects(this.$route.params.sessionId)
       .then(response => {
+        this.$loadingIndicatorHelper.hide(this);
+
         this.items = response.data;
         this.combinedItems = this.generateCombinedItemsByType(this.items);
       })
       .catch(error => {
+        this.$loadingIndicatorHelper.hide(this);
+
         this.items = [];
       });
   }
 };
 </script>
 <style>
-.tableMinColWidth {
-  width: 1px !important;
-}
+
 
 .innerHead {
   background-color: #181818;

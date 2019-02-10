@@ -8,7 +8,6 @@
 </template>
 <script>
 import TopBar from "@/components/TopBar.vue";
-import axios from "axios";
 
 export default {
   name: "large-objects-analyzer",

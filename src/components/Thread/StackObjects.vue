@@ -25,16 +25,16 @@ export default {
   data: function() {
     return {
       fields: {
-        typeName: {
-          label: "Type",
-          tdClass: "tableDetailColumn"
-        },
         objectAddress: {
           label: "Address",
           sortable: true,
+          tdClass: "tableMinColWidth",
           formatter: (value, key, item) => {
             return value; //numberHelper.decimalToHexString(value);
           }
+        },
+        typeName: {
+          label: "Type",
         }
       }
     };

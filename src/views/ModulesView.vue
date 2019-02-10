@@ -9,7 +9,6 @@
 <script>
 import TopBar from "@/components/TopBar.vue";
 import ModuleList from "@/components/Module/ModuleList.vue";
-import axios from "axios";
 
 export default {
   name: "modules",

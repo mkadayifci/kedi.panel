@@ -2,8 +2,10 @@
   <div class="container-fluid pt-80">
     <h5>Duplicate Strings Analyzer</h5>
     <hr>
-     
-    <p><i class="fa fa-info fa-lg pr-1"></i> This analyzer inspects memory for strings that duplicates at least 2 times. This analyzer's result is limited to first 100 unique strings.</p>
+
+    <p>
+      <i class="fa fa-info fa-lg pr-1"></i> This analyzer inspects memory for strings that duplicates at least 2 times. This analyzer's result is limited to first 100 unique strings.
+    </p>
     <TopBar/>
     <b-table
       style="white-space: pre;"
@@ -24,7 +26,10 @@
         ></i>
       </template>
       <template slot="row-details" slot-scope="row">
-        <div class="row" style="background-color:white;border-radius: 5px;margin: 0px !important;padding: 2px;" >
+        <div
+          class="row"
+          style="background-color:white;border-radius: 5px;margin: 0px !important;padding: 2px;"
+        >
           <div class="col-md-1" v-for="item in row.item.itemArray" :key="item.value.address">
             <router-link
               right
@@ -72,7 +77,10 @@ export default {
         },
         content: {
           label: "Content",
-          sortable: true
+          sortable: true,
+            formatter: value => {
+            return '"' + value + '"';
+          }
         }
       },
       modules: {}
@@ -97,14 +105,17 @@ export default {
     }
   },
   mounted() {
+    this.$loadingIndicatorHelper.show(this);
     apiGateway
       .getDuplicateStrings(this.$route.params.sessionId)
       .then(response => {
         this.baseData = response.data;
         this.items = this.generateDisplayData(response.data);
+        this.$loadingIndicatorHelper.hide(this);
       })
       .catch(error => {
         this.items = [];
+        this.$loadingIndicatorHelper.hide(this);
       });
   }
 };

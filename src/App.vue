@@ -8,7 +8,7 @@
         </div>
         <div class="col-md-10 pl-0">
           <div>
-            <div class="row">
+            <div style="min-height:800px" id="routerViewContainer" class="row">
               <router-view/>
             </div>
           </div>
@@ -41,3 +41,4 @@ export default {
 
 
 </style>
+

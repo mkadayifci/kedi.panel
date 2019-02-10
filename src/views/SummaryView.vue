@@ -1,9 +1,9 @@
 <template>
   <div class="container-fluid pt-80">
     <TopBar/>
-        <h5>Summary</h5>
+    <h5>Summary</h5>
     <hr>
-    <div class="card mb-3 alert-secondary">
+    <div v-if="isLoaded" class="card mb-3 alert-secondary">
       <div class="card-body">
         <h4 class="card-title">{{summary.sourceName}}</h4>
         <div class="row" style="font-size: 1.1em;line-height: 2em;">
@@ -27,26 +27,31 @@
 
 <script>
 import TopBar from "@/components/TopBar.vue";
-import axios from "axios";
+import apiGateway from "@/server-communication/api-gateway";
 
 export default {
   name: "summaryView",
   components: { TopBar },
   data: function() {
     return {
-      summary: {}
+      summary: {},
+      isLoaded: false
     };
   },
   methods: {
     getSummary: function() {
-      axios
-        .get(
-          "http://localhost:9000/api/summary/30230bf96a884830a0b96805cf173717"
-        )
+      this.$loadingIndicatorHelper.show(this);
+
+      apiGateway
+        .getSummary(this.$route.params.sessionId)
         .then(response => {
           this.summary = response.data;
+          this.$loadingIndicatorHelper.hide(this);
+          this.isLoaded = true;
         })
-        .catch(error => {});
+        .catch(error => {
+          this.$loadingIndicatorHelper.hide(this);
+        });
     }
   },
   mounted() {

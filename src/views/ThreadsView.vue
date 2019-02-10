@@ -10,7 +10,6 @@
 <script>
 import ThreadList from "@/components/Thread/ThreadList.vue";
 import TopBar from "@/components/TopBar.vue";
-
 export default {
   name: "threads",
   data: function() {
@@ -22,18 +21,19 @@ export default {
   components: { ThreadList, TopBar },
   methods: {
     onThreadListLoaded: function() {
-      this.isLoaded=true;
-      this.$Progress.finish();
+      this.$loadingIndicatorHelper.hide(this);
+      this.isLoaded = true;
     }
   },
   mounted() {
-    this.$Progress.start();
+    this.$loadingIndicatorHelper.show(this);
     this.$refs.threadList.list();
   }
 };
 </script>
 
 
+   
   
   
   

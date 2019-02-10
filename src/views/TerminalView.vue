@@ -40,7 +40,7 @@ export default {
       } else if (line != "") {
         that.signalRProxy.invoke(
           "send",
-          "30230bf96a884830a0b96805cf173717",
+          this.$route.params.sessionId,
           line
         );
         this.write(line);
@@ -86,61 +86,6 @@ export default {
   background: #33d011;
 }
 
-/* .term {
-  font-family: courier, fixed, swiss, sans-serif;
-  font-size: 12px;
-  color: #33d011;
-  background: none;
-}
-
-.termReverse {
-  color: #111111;
-  background: #33d011;
-}
-
-
-
-.termReverse {
-  color: #111111;
-  background: #33d011;
-}
-
-
-.lh15 {
-  line-height: 15px;
-}
-
-a,
-a:link,
-a:visited {
-  text-decoration: none;
-  color: #77dd11;
-}
-
-a:hover {
-  text-decoration: underline;
-  color: #77dd11;
-}
-
-a:active {
-  text-decoration: underline;
-  color: #dddddd;
-}
-
-a.termopen,
-a.termopen:link,
-a.termopen:visited {
-  text-decoration: none;
-  color: #77dd11;
-  background: none;
-}
-
-a.termopen:hover {
-  text-decoration: none;
-  color: #222222;
-  background: #77dd11;
-}
-*/
 #container a.termopen:active {
   text-decoration: none;
   color: black;
