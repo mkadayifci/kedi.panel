@@ -16,9 +16,20 @@
     <!-- Tab panes -->
     <div style="padding-top:10px" class="tab-content">
       <div role="tabpanel" class="tab-pane fade in active show" id="profile">
-      <ObjectList :items="finalizableObjects"/>
+        <ObjectList :items="finalizableObjects"/>
       </div>
-      <div role="tabpanel" class="tab-pane fade" id="buzz"></div>
+      <div role="tabpanel" class="tab-pane fade" id="buzz">
+        <div v-if="objectsInFinalizerQueue.length==0" class="alert alert-success" role="alert">
+          <i
+            style="font-size: 1.4rem; padding-right: 20px;"
+            class="fa fa-info"
+            aria-hidden="true"
+          ></i>
+          <span>There is no object in finalizer queue.</span>
+        </div>
+
+        <ObjectList v-if="objectsInFinalizerQueue.length>0"  :items="objectsInFinalizerQueue"/>
+      </div>
     </div>
   </div>
 </template>
@@ -29,14 +40,14 @@ import apiGateway from "@/server-communication/api-gateway";
 
 export default {
   name: "finalizer-queue-analyzer",
-  components: { TopBar,ObjectList },
+  components: { TopBar, ObjectList },
   data: function() {
     return {
-      finalizableObjects: []
+      finalizableObjects: [],
+      objectsInFinalizerQueue: []
     };
   },
-  computed: {
-  },
+  computed: {},
   methods: {},
   mounted() {
     this.$loadingIndicatorHelper.show(this);
@@ -44,12 +55,15 @@ export default {
     apiGateway
       .getFinalizerQueue(this.$route.params.sessionId)
       .then(response => {
-        this.finalizableObjects = response.data;
+        this.finalizableObjects = response.data.finalizableObjects;
+        this.objectsInFinalizerQueue = response.data.objectsInFinalizerQueue;
+
         this.$loadingIndicatorHelper.hide(this);
       })
       .catch(error => {
         this.$loadingIndicatorHelper.hide(this);
-        this.items = [];
+        this.finalizableObjects = [];
+        this.objectsInFinalizerQueue = [];
       });
   }
 };

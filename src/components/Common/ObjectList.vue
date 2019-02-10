@@ -37,7 +37,7 @@ export default {
           sortable: true,
           tdClass: "tableMinColWidth",
           formatter: (value, key, item) => {
-            return value; //numberHelper.decimalToHexString(value);
+            return `${value} (${numberHelper.decimalToHexString(value)})`;
           }
         },
         typeName: {
