@@ -13,6 +13,7 @@ import StackTraceAnalyzerView from "./views/Analyzers/StackTraceAnalyzerView.vue
 import DuplicateStringsAnalyzerView from "./views/Analyzers/DuplicateStringsAnalyzerView.vue";
 import ThreadPoolAnalyzerView from "./views/Analyzers/ThreadPoolAnalyzerView.vue";
 import LargeObjectsAnalyzerView from "./views/Analyzers/LargeObjectsAnalyzerView.vue";
+import FinalizerQueueAnalyzerView from "./views/Analyzers/FinalizerQueueAnalyzerView.vue";
 
 
 Vue.use(Router);
@@ -60,6 +61,12 @@ export default new Router({
       name: "exception-analyzer",
       component: ExceptionAnalyzerView
     },
+    {
+      path: "/finalizer-queue-analyzer/:sessionId",
+      name: "finalizer-queue-analyzer",
+      component: FinalizerQueueAnalyzerView
+    },
+
     {
       path: "/stack-trace-analyzer/:sessionId",
       name: "stack-trace-analyzer",

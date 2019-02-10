@@ -61,6 +61,10 @@
             tag="li"
             :to="{ name: 'large-objects-analyzer', params: {sessionId:this.$route.params.sessionId }}"
           >Large Objects</router-link>
+          <router-link
+            tag="li"
+            :to="{ name: 'finalizer-queue-analyzer', params: {sessionId:this.$route.params.sessionId }}"
+          >Finalizer Queue</router-link>
 
           <!-- <li>
             <a href="#">ADO.Net Best Practices</a>
@@ -176,11 +180,6 @@
 .nav-side-menu li a {
   text-decoration: none;
   color: #ffffff;
-}
-.nav-side-menu li a i {
-  /* padding-left: 10px;
-  width: 20px;
-  padding-right: 30px; */
 }
 
 .nav-side-menu li i {

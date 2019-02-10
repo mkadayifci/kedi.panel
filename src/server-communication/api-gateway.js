@@ -24,6 +24,10 @@ export default new class ApiGateway {
         return axios
             .get(`${this.hostProtocolSection}${this.urlPrefix}/analyzers/stack-trace-analyzer/${sessionId}`);
     }
+    getFinalizerQueue(sessionId) {
+        return axios
+            .get(`${this.hostProtocolSection}${this.urlPrefix}/analyzers/finalizer-queue-analyzer/${sessionId}`);
+    }
     getMemoryStats(sessionId) {
         return axios
             .get(`${this.hostProtocolSection}${this.urlPrefix}/memory/${sessionId}`);
