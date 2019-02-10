@@ -6,6 +6,7 @@ import ModulesView from "./views/ModulesView.vue";
 import ObjectView from "./views/ObjectView.vue";
 import TerminalView from "./views/TerminalView.vue";
 import MemoryView from "./views/MemoryView.vue";
+import WelcomeView from "./views/WelcomeView.vue";
 
 import ExceptionAnalyzerView from "./views/Analyzers/ExceptionAnalyzerView.vue";
 import StackTraceAnalyzerView from "./views/Analyzers/StackTraceAnalyzerView.vue";
@@ -19,10 +20,15 @@ Vue.use(Router);
 export default new Router({
   routes: [
     {
+      path: "/welcome/",
+      name: "welcome",
+      component: WelcomeView,
+      alias: "/"
+    },
+    {
       path: "/summary/:sessionId",
       name: "summary",
-      component: SummaryView,
-      alias: '/'
+      component: SummaryView
     },
     {
       path: "/threads/:sessionId",
@@ -74,6 +80,5 @@ export default new Router({
       name: "large-objects-analyzer",
       component: LargeObjectsAnalyzerView
     }
-    
   ]
 });

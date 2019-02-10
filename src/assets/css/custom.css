@@ -1,18 +1,35 @@
-.pt-80{
+.pt-80 {
     padding-top: 80px !important;
-  }
-  
-  .tableDetailColumn {
+}
+
+.tableDetailColumn {
     width: 1px !important;
-  }
-  
-  .tbodyOuterBeige {
+}
+
+.tbodyOuterBeige {
     background-color: beige;
-  }
-  .tHead {
+}
+
+.tHead {
     background-color: #181818;
     color: white;
-  }
-  .tableMinColWidth {
+}
+
+.tableMinColWidth {
     width: 1px !important;
-  }
+}
+
+.sideBarContainer {
+    z-index: 10000;
+    padding-right: 0px;
+    padding-left: 0px;
+    background-color: #181818;
+    min-height: 100vh;
+    box-shadow: 0px 0px 1px black;
+    -moz-box-shadow: 0px 0px 1px black;
+    -webkit-box-shadow: 0px 0px 1px black;
+  
+}
+body{
+    overflow-y: scroll; 
+}

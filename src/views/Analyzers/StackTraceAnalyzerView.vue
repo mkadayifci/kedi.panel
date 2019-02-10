@@ -14,7 +14,12 @@
         >Method hit counts in current threads</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#buzz" role="tab" data-toggle="tab">Exact match call stacks in threads</a>
+        <a
+          class="nav-link"
+          href="#buzz"
+          role="tab"
+          data-toggle="tab"
+        >Exact match call stacks in threads</a>
       </li>
     </ul>
 
@@ -39,13 +44,11 @@
           "
               ></i>
             </template>
-            <template slot="row-details" slot-scope="row"></template>
+            <template slot="row-details" slot-scope="row">{{row.item.seenInThreads}}</template>
           </b-table>
         </template>
       </div>
-      <div role="tabpanel" class="tab-pane fade" id="buzz">
-        <v-chart :options="options"/>
-      </div>
+      <div role="tabpanel" class="tab-pane fade" id="buzz"></div>
     </div>
   </div>
 </template>
@@ -59,6 +62,7 @@ export default {
   components: { TopBar },
   data: function() {
     return {
+      exactMatchData: [],
       callCountList: [],
       callCountFields: {
         show_details: {
@@ -91,17 +95,24 @@ export default {
       }
     };
   },
-  methods: {},
+  methods: {
+    tableRowDetailToggle: function(row) {
+      row.toggleDetails();
+    }
+  },
   mounted() {
     this.$loadingIndicatorHelper.show(this);
     apiGateway
       .getStackTraceAnalyze(this.$route.params.sessionId)
       .then(response => {
         this.callCountList = response.data.methodHitData;
+        this.exactMatchData = response.data.exactMatchData;
+
         this.$loadingIndicatorHelper.hide(this);
       })
       .catch(error => {
         this.callCountList == [];
+        this.exactMatchData == [];
         this.$loadingIndicatorHelper.hide(this);
       });
   }

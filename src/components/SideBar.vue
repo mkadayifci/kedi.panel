@@ -1,5 +1,5 @@
 <template>
-  <div class="nav-side-menu">
+  <div class="nav-side-menu col-md-12">
     <div class="menu-list">
       <ul id="menu-content" class="menu-content collapse out">
         <router-link
@@ -48,7 +48,7 @@
           <router-link
             tag="li"
             :to="{ name: 'stack-trace-analyzer', params: {sessionId:this.$route.params.sessionId }}"
-          >Stack Trace</router-link>
+          >Call Stack</router-link>
           <router-link
             tag="li"
             :to="{ name: 'threadpool-analyzer', params: {sessionId:this.$route.params.sessionId }}"
@@ -95,18 +95,14 @@
 
 <style>
 .nav-side-menu {
+  position: sticky;
   overflow: auto;
   font-size: 14px;
   background-color: #181818;
-  position: fixed;
   top: 60px;
   left: 0px;
-  width: 300px;
-  height: 100%;
+  padding-right: 0px;
   color: #ffffff;
-  box-shadow: 0px 0px 1px black;
-  -moz-box-shadow: 0px 0px 1px black;
-  -webkit-box-shadow: 0px 0px 1px black;
 }
 .nav-side-menu .brand {
   background-color: #374955;
@@ -122,7 +118,7 @@
 .nav-side-menu li {
   list-style: none;
   padding: 0px;
-  margin-left: 10px;
+  margin-left: 3px;
   border-radius: 5px 0px 0px 5px;
   line-height: 35px;
   cursor: pointer;
@@ -173,7 +169,7 @@
   vertical-align: middle;
 }
 .nav-side-menu li {
-  padding-left: 10px;
+  padding-left: 3px;
   border-left: 3px solid #181818;
   border-bottom: 1px solid #181818;
 }

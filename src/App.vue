@@ -3,10 +3,10 @@
     <div class="container-fluid">
           <vue-progress-bar></vue-progress-bar>
       <div class="row">
-        <div class="col-md-2" style="z-index:10000">
+        <div class="col-md-2 sideBarContainer">
           <SideBar/>
         </div>
-        <div class="col-md-10 pl-0">
+        <div class="col-md-10">
           <div>
             <div style="min-height:800px" id="routerViewContainer" class="row">
               <router-view/>
