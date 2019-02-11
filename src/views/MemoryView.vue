@@ -15,16 +15,22 @@
         >Type statistics for application</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#buzz" role="tab" data-toggle="tab">Heap segment details</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#references" role="tab" data-toggle="tab">references</a>
+        <a class="nav-link" href="#buzz" role="tab" data-toggle="tab">Heap segment usage</a>
       </li>
     </ul>
-
-    <!-- Tab panes -->
     <div style="padding-top:10px" class="tab-content">
       <div role="tabpanel" class="tab-pane fade in active show" id="profile">
+        <div class="pb-2">
+          <span style="line-height: 2.5;" class="pr-2">
+            <strong>Memory Regions:</strong>
+          </span>
+          <b-form-select
+            style="width:300px"
+            v-model="selectedMemoryRegion"
+            :options="memoryRegionSelectOptionsForTypeStats"
+            size="sm"
+          />
+        </div>
         <template>
           <b-table
             style="white-space: pre;"
@@ -47,30 +53,24 @@
           "
               ></i>
             </template>
-            <template slot="row-details" slot-scope="row">
-              {{row}}
-            </template>
+            <template slot="row-details" slot-scope="row">{{row}}</template>
           </b-table>
         </template>
       </div>
       <div role="tabpanel" class="tab-pane fade" id="buzz">
-        <v-chart :options="options"/>
+        <SegmentChart :segmentUsageArray="segmentUsageArray" :totalHeap="totalHeap"/>
       </div>
-      <div role="tabpanel" class="tab-pane fade" id="references">ccc</div>
     </div>
   </div>
 </template>
 <script>
 import TopBar from "@/components/TopBar.vue";
+import SegmentChart from "@/components/Memory/SegmentChart.vue";
 import apiGateway from "@/server-communication/api-gateway";
 import numberHelper from "@/helpers/number-helper";
 
-import "echarts/lib/chart/pie";
-import "echarts/lib/component/legend";
-import "echarts/lib/component/legendScroll";
-
 export default {
-  components: { TopBar },
+  components: { TopBar, SegmentChart },
   methods: {
     tableRowDetailToggle: function(row) {
       row.toggleDetails();
@@ -81,7 +81,8 @@ export default {
         returnValue.push({
           typeName: property.charAt(0).toUpperCase() + property.slice(1),
           count: statsByTypeRaw[property].count,
-          size: statsByTypeRaw[property].totalSize
+          size: statsByTypeRaw[property].totalSize,
+          percentage: statsByTypeRaw[property].percentage
         });
       }
       return returnValue;
@@ -95,6 +96,17 @@ export default {
     };
 
     return {
+      selectedMemoryRegion: "Whole",
+      memoryRegionSelectOptionsForTypeStats: [
+        { value: "Whole", text: "Whole application memory" },
+        { value: "Gen0", text: "Generation 0 Objects" },
+        { value: "Gen1", text: "Generation 1 Objects" },
+        { value: "Gen2", text: "Generation 2 Objects" },
+        { value: "Gen3", text: "Large Object Heap" }
+      ],
+      segmentUsageArray: [],
+      totalHeap:0,
+      responseData: {},
       sortDesc: true,
       statsItems: [],
       statsFields: {
@@ -110,6 +122,14 @@ export default {
             return numberHelper.numberWithCommas(value);
           }
         },
+        percentage: {
+          label: "Percentage",
+          sortable: true,
+          tdClass: "tableMinColWidth",
+          formatter: value => {
+            return `${value}%`;
+          }
+        },
         size: {
           label: "Size",
           sortable: true,
@@ -121,53 +141,59 @@ export default {
           label: "Type",
           sortable: true
         }
-      },
-      options: {
-        title: {
-          text: "Text for chart",
-          subtext: "Sub text for chart",
-          x: "center"
-        },
-        tooltip: {
-          trigger: "item",
-          formatter: "{a} <br/>{b} : {c} ({d}%)"
-        },
-        legend: {
-          type: "scroll",
-          orient: "vertical",
-          right: 10,
-          top: 20,
-          bottom: 20,
-          data: data.legendData,
-          selected: data.selected
-        },
-        series: [
-          {
-            name: "Serie Name",
-            type: "pie",
-            radius: "55%",
-            center: ["40%", "50%"],
-            data: data.seriesData,
-            itemStyle: {
-              emphasis: {
-                shadowBlur: 10,
-                shadowOffsetX: 0,
-                shadowColor: "rgba(0, 0, 0, 0.5)"
-              }
-            }
-          }
-        ]
       }
     };
   },
-  mounted () {
+  watch: {
+    selectedMemoryRegion: function(val) {
+      switch (val) {
+        case "Whole":
+          this.statsItems = this.generatePresentationData(
+            this.responseData.statsByType
+          );
+          break;
+        case "Gen0":
+          this.statsItems = this.generatePresentationData(
+            this.responseData.statsByTypeGen0
+          );
+          break;
+        case "Gen1":
+          this.statsItems = this.generatePresentationData(
+            this.responseData.statsByTypeGen1
+          );
+          break;
+        case "Gen2":
+          this.statsItems = this.generatePresentationData(
+            this.responseData.statsByTypeGen2
+          );
+          break;
+        case "Gen3":
+          this.statsItems = this.generatePresentationData(
+            this.responseData.statsByTypeGen3
+          );
+          break;
+      }
+    }
+  },
+  mounted() {
     this.$loadingIndicatorHelper.show(this);
     apiGateway
       .getMemoryStats(this.$route.params.sessionId)
       .then(response => {
+
+        this.segmentUsageArray = [
+          response.data.lohLength,
+          response.data.gen2Length,
+          response.data.gen1Length,
+          response.data.gen0Length
+        ];
+
+        this.totalHeap=response.data.totalHeapSize;
+
         this.statsItems = this.generatePresentationData(
           response.data.statsByType
         );
+        this.responseData = response.data;
         this.$loadingIndicatorHelper.hide(this);
       })
       .catch(error => {

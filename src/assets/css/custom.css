@@ -33,3 +33,9 @@
 body{
     overflow-y: scroll; 
 }
+
+.echarts {
+
+    width:100% !important;
+    min-height: 400px;
+}
