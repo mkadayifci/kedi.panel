@@ -45,6 +45,7 @@ export default {
   props: {},
   data: function() {
     return {
+      activeCallCount: 0,
       pageSize: 100,
       isTableBusy: false,
       items: Array,
@@ -117,7 +118,7 @@ export default {
     list: function() {
       apiGateway
         .getThreadsList(this.$route.params.sessionId)
-        .then(response => {          
+        .then(response => {
           this.items = this.prepareThreadDataForPresantation(response.data);
           this.$refs.resultTable.refresh();
           this.$emit("on-loaded", this);
@@ -126,6 +127,7 @@ export default {
           this.items = [];
           this.$emit("on-loaded", this);
         });
+
     },
     prepareThreadDataForPresantation(threadData) {
       threadData.forEach(item => {

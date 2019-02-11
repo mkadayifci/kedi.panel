@@ -11,7 +11,6 @@ import WelcomeView from "./views/WelcomeView.vue";
 import ExceptionAnalyzerView from "./views/Analyzers/ExceptionAnalyzerView.vue";
 import StackTraceAnalyzerView from "./views/Analyzers/StackTraceAnalyzerView.vue";
 import DuplicateStringsAnalyzerView from "./views/Analyzers/DuplicateStringsAnalyzerView.vue";
-import ThreadPoolAnalyzerView from "./views/Analyzers/ThreadPoolAnalyzerView.vue";
 import LargeObjectsAnalyzerView from "./views/Analyzers/LargeObjectsAnalyzerView.vue";
 import FinalizerQueueAnalyzerView from "./views/Analyzers/FinalizerQueueAnalyzerView.vue";
 import PinnedObjectsAnalyzerView from "./views/Analyzers/PinnedObjectsAnalyzerView.vue";
@@ -82,11 +81,6 @@ export default new Router({
       path: "/duplicate-strings-analyzer/:sessionId",
       name: "duplicate-strings-analyzer",
       component: DuplicateStringsAnalyzerView
-    },
-    {
-      path: "/threadpool-analyzer/:sessionId",
-      name: "threadpool-analyzer",
-      component: ThreadPoolAnalyzerView
     },
     {
       path: "/large-objects-analyzer",

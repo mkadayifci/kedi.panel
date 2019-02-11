@@ -51,10 +51,6 @@
           >Call Stack</router-link>
           <router-link
             tag="li"
-            :to="{ name: 'threadpool-analyzer', params: {sessionId:this.$route.params.sessionId }}"
-          >ThreadPool</router-link>
-          <router-link
-            tag="li"
             :to="{ name: 'duplicate-strings-analyzer', params: {sessionId:this.$route.params.sessionId }}"
           >Duplicate Strings</router-link>
           <router-link

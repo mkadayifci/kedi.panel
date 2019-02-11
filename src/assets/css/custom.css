@@ -35,7 +35,8 @@ body{
 }
 
 .echarts {
-
     width:100% !important;
-    min-height: 400px;
+    text-align: left;
+    float:left;
+    /* min-height: 400px; */
 }
