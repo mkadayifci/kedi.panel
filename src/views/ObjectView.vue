@@ -7,14 +7,14 @@
     <TopBar/>
     <h5 v-if="isLoaded">{{this.objectDetail.typeName}} ( {{this.objectDetail.elementType}} )</h5>
     <p/>
-    <h6  v-if="isLoaded">Properties</h6>
-    <div  v-if="isLoaded" class="card alert alert-secondary">
+    <h6 v-if="isLoaded">Properties</h6>
+    <div v-if="isLoaded" class="card alert alert-secondary">
       <div class="card-body">
         <div class="row">
           <div class="col-md-6">
             <div>
               <strong>Size:</strong>
-              {{this.objectDetail.size}}
+              {{this.formatNumber(this.objectDetail.size)}}
             </div>
             <div>
               <strong>TypeName:</strong>
@@ -68,7 +68,7 @@
       </div>
     </div>
 
-    <div  v-if="isLoaded" class="row">
+    <div v-if="isLoaded" class="row">
       <div class="col-md-12">
         <template>
           <h6>Members</h6>
@@ -103,6 +103,7 @@
 <script>
 import TopBar from "@/components/TopBar.vue";
 import apiGateway from "@/server-communication/api-gateway";
+import numberHelper from "@/helpers/number-helper";
 
 export default {
   components: { TopBar },
@@ -133,7 +134,11 @@ export default {
       }
     };
   },
-  methods: {},
+  methods: {
+    formatNumber: function(value) {
+      return numberHelper.numberWithCommas(value);
+    }
+  },
   mounted() {
     this.$loadingIndicatorHelper.show(this);
 

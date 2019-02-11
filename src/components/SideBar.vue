@@ -65,6 +65,10 @@
             tag="li"
             :to="{ name: 'finalizer-queue-analyzer', params: {sessionId:this.$route.params.sessionId }}"
           >Finalizer Queue</router-link>
+          <router-link
+            tag="li"
+            :to="{ name: 'pinned-objects-analyzer', params: {sessionId:this.$route.params.sessionId }}"
+          >Pinned Objects</router-link>
 
           <!-- <li>
             <a href="#">ADO.Net Best Practices</a>

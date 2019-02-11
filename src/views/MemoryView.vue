@@ -47,7 +47,9 @@
           "
               ></i>
             </template>
-            <template slot="row-details" slot-scope="row"></template>
+            <template slot="row-details" slot-scope="row">
+              {{row}}
+            </template>
           </b-table>
         </template>
       </div>

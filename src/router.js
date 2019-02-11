@@ -14,6 +14,7 @@ import DuplicateStringsAnalyzerView from "./views/Analyzers/DuplicateStringsAnal
 import ThreadPoolAnalyzerView from "./views/Analyzers/ThreadPoolAnalyzerView.vue";
 import LargeObjectsAnalyzerView from "./views/Analyzers/LargeObjectsAnalyzerView.vue";
 import FinalizerQueueAnalyzerView from "./views/Analyzers/FinalizerQueueAnalyzerView.vue";
+import PinnedObjectsAnalyzerView from "./views/Analyzers/PinnedObjectsAnalyzerView.vue";
 
 
 Vue.use(Router);
@@ -66,7 +67,12 @@ export default new Router({
       name: "finalizer-queue-analyzer",
       component: FinalizerQueueAnalyzerView
     },
-
+    {
+      path: "/pinned-objects-analyzer/:sessionId",
+      name: "pinned-objects-analyzer",
+      component: PinnedObjectsAnalyzerView
+    },
+    
     {
       path: "/stack-trace-analyzer/:sessionId",
       name: "stack-trace-analyzer",

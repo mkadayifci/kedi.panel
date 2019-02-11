@@ -16,6 +16,10 @@ export default new class ApiGateway {
         return axios
             .get(`${this.hostProtocolSection}${this.urlPrefix}/analyzers/duplicate-strings-analyzer/${sessionId}`);
     }
+    getPinnedObjects(sessionId) {
+        return axios
+            .get(`${this.hostProtocolSection}${this.urlPrefix}/analyzers/pinned-objects-analyzer/${sessionId}`);
+    }
     getThreadPoolDetail(sessionId) {
         return axios
             .get(`${this.hostProtocolSection}${this.urlPrefix}/analyzers/threadpool-analyzer/${sessionId}`);

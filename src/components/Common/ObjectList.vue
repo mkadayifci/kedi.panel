@@ -27,7 +27,7 @@
 import numberHelper from "@/helpers/number-helper";
 export default {
   name: "ObjectList",
-  props: ["items"],
+  props: ["items","additionalFields"],
   methods: {},
   data: function() {
     return {
@@ -46,6 +46,12 @@ export default {
         }
       }
     };
+  },
+  mounted(){
+    if(this.additionalFields!==undefined){
+      this.fields = {...this.fields , ...this.additionalFields};
+    }
+    console.log(this.fields);
   }
 };
 </script>

@@ -21,10 +21,10 @@
 require('typeface-open-sans');
 require('typeface-ubuntu-mono');
 import SideBar from "@/components/SideBar.vue";
-import TopBar from "@/components/TopBar.vue";
+
 
 export default {
-  components: { SideBar, TopBar }
+  components: { SideBar }
 };
 </script>
 
