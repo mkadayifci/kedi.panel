@@ -1,10 +1,10 @@
 import axios from 'axios'
 
 export default new class ApiGateway {
-    hostProtocolSection="http://localhost:9000";
-    urlPrefix="/api";
+    hostProtocolSection = "http://localhost:9000";
+    urlPrefix = "/api";
 
-    getObject(sessionId,objectPointer) {
+    getObject(sessionId, objectPointer) {
         return axios
             .get(`${this.hostProtocolSection}${this.urlPrefix}/object/${sessionId}/${objectPointer}`);
     }
@@ -48,8 +48,18 @@ export default new class ApiGateway {
         return axios
             .get(`${this.hostProtocolSection}${this.urlPrefix}/summary/${sessionId}`);
     }
+    getTypeNames(sessionId) {
+        return axios
+            .get(`${this.hostProtocolSection}${this.urlPrefix}/play-zone/types/${sessionId}`);
 
-    
+    }
+    getPlayZoneResults(sessionId, types, searchValue) {
+        return axios
+            .get(`${this.hostProtocolSection}${this.urlPrefix}/play-zone/results/${sessionId}`, { params: { queryValue: searchValue, type: types } });
+    }
+
+
+
 }
 
 

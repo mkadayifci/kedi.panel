@@ -34,6 +34,15 @@
         >
           <i class="fa fa-microchip fa-lg"></i> Memory Stats
         </router-link>
+        <router-link
+          right
+          class="nav-item"
+          tag="li"
+          :to="{ name: 'play-zone', params: {sessionId:this.$route.params.sessionId}}"
+        >
+          <i class="fa fa-gamepad fa-lg"></i> Play Zone
+        </router-link>
+
         <li data-toggle="collapse" data-target="#products" class="collapsed active">
           <a href="#">
             <i class="fa fa-paw fa-lg"></i> Analyzers

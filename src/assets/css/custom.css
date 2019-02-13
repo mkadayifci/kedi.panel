@@ -40,3 +40,21 @@ body{
     float:left;
     /* min-height: 400px; */
 }
+
+
+.multiselect__tags {
+    min-height: 30px;
+    margin: 5px 0px !important;
+  }
+  
+  .multiselect__input {
+    font-size: 12px !important;
+  }
+  
+  .multiselect__input {
+    font-size: 12px !important;
+  }
+  
+  .multiselect__option {
+    font-size: 12px !important;
+  }

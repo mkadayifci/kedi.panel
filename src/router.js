@@ -7,6 +7,7 @@ import ObjectView from "./views/ObjectView.vue";
 import TerminalView from "./views/TerminalView.vue";
 import MemoryView from "./views/MemoryView.vue";
 import WelcomeView from "./views/WelcomeView.vue";
+import PlayZoneView from "./views/PlayZoneView.vue";
 
 import ExceptionAnalyzerView from "./views/Analyzers/ExceptionAnalyzerView.vue";
 import StackTraceAnalyzerView from "./views/Analyzers/StackTraceAnalyzerView.vue";
@@ -45,6 +46,12 @@ export default new Router({
       path: "/terminal/:sessionId",
       name: "terminal",
       component: TerminalView
+    },    
+    {
+      path: "/play-zone/:sessionId",
+      name: "play-zone",
+      component: PlayZoneView
+      
     },
     {
       path: "/object/:sessionId/:objectPointer",

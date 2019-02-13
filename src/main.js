@@ -4,6 +4,7 @@ import "bootstrap/dist/js/bootstrap.min.js";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 import 'vue-loading-overlay/dist/vue-loading.css';
 import "font-awesome/css/font-awesome.css"
+import "vue-multiselect/dist/vue-multiselect.min.css"
 import "@/assets/css/custom.css"
 import Vue from "vue";
 import App from "./App.vue";
@@ -14,6 +15,9 @@ import ECharts from 'vue-echarts'
 import Loading from 'vue-loading-overlay';
 import VueProgressBar from 'vue-progressbar'
 import loadingIndicatorHelper from "@/helpers/loadingIndicator-helper";
+import Multiselect from 'vue-multiselect'
+
+
 
 window.$ = window.jQuery = require('jquery');
 
@@ -24,6 +28,7 @@ Vue.use(VueProgressBar, { color: 'black', failedColor: 'red', thickness: '5px', 
 Vue.use(BootstrapVue);
 
 Vue.component('v-chart', ECharts);
+Vue.component('vue-multiselect', Multiselect);
 Vue.config.productionTip = false;
 
 new Vue({
@@ -31,3 +36,6 @@ new Vue({
   store,
   render: h => h(App)
 }).$mount("#app");
+
+
+

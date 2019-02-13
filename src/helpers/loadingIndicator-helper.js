@@ -3,6 +3,16 @@
 export default new class LoadingIndicatorHelper {
     loadIndicator;
     showHandler;
+    showProgress(component)
+    {
+        component.$Progress.start();
+    }
+
+    hideProgress(component)
+    {
+        component.$Progress.hide();
+    }
+
     show(component) {
         this.clearShow();
         component.$Progress.start();
