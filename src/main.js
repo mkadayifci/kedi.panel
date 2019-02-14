@@ -30,6 +30,11 @@ Vue.component('v-chart', ECharts);
 Vue.component('vue-multiselect', Multiselect);
 Vue.config.productionTip = false;
 
+router.beforeEach((to, from, next) => {
+  document.title = to.meta.title;
+  next();
+});
+
 new Vue({
   router,
   store,

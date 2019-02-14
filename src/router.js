@@ -26,79 +26,126 @@ export default new Router({
       path: "/welcome/",
       name: "welcome",
       component: WelcomeView,
-      alias: "/"
+      alias: "/",
+      meta: {
+        title: 'About Page - Example App'
+      }
     },
     {
       path: "/summary/:sessionId",
       name: "summary",
-      component: SummaryView
+      component: SummaryView,
+      meta: {
+        title: 'Summary - kedi'
+      }
     },
     {
       path: "/threads/:sessionId",
       name: "threads",
-      component: ThreadsView
+      component: ThreadsView,
+      meta: {
+        title: 'Thread List - kedi'
+      }
     },
     {
       path: "/memory/:sessionId",
       name: "memory",
-      component: MemoryView
+      component: MemoryView,
+      meta: {
+        title: 'Memory Statistics - kedi'
+      }
     },
     {
       path: "/terminal/:sessionId",
       name: "terminal",
-      component: TerminalView
-    },    
+      component: TerminalView,
+      meta: {
+        title: 'Terminal - kedi'
+      }
+    },
     {
       path: "/play-zone/:sessionId",
       name: "play-zone",
-      component: PlayZoneView
-      
+      component: PlayZoneView,
+      meta: {
+        title: 'Play Zone - kedi'
+      }
+
     },
     {
       path: "/object/:sessionId/:objectPointer",
       name: "object",
-      component: ObjectView
+      component: ObjectView,
+      meta: {
+        title: 'Object Detail - kedi'
+      }
     },
     {
       path: "/modules/:sessionId",
       name: "modules",
-      component: ModulesView
+      component: ModulesView,
+      meta: {
+        title: 'Loaded Modules - kedi'
+      }
     },
     {
       path: "/exception-analyzer/:sessionId",
       name: "exception-analyzer",
-      component: ExceptionAnalyzerView
+      component: ExceptionAnalyzerView,
+      meta: {
+        title: 'Exceptions In Memory - kedi'
+      }
     },
     {
       path: "/blocking-objects-analyzer/:sessionId",
       name: "blocking-objects-analyzer",
-      component: BlockingObjectsAnalyzerView
+      component: BlockingObjectsAnalyzerView,
+      meta: {
+        title: 'Blocking Objects (locks) - kedi'
+      }
     },
     {
       path: "/finalizer-queue-analyzer/:sessionId",
       name: "finalizer-queue-analyzer",
-      component: FinalizerQueueAnalyzerView
+      component: FinalizerQueueAnalyzerView,
+      meta: {
+        title: 'Finalizable Objects and Queue - kedi'
+      }
     },
     {
       path: "/pinned-objects-analyzer/:sessionId",
       name: "pinned-objects-analyzer",
-      component: PinnedObjectsAnalyzerView
+      component: PinnedObjectsAnalyzerView,
+      meta: {
+        title: 'Pinned Memory Objects - kedi'
+      }
     },
-    
+
     {
       path: "/stack-trace-analyzer/:sessionId",
       name: "stack-trace-analyzer",
-      component: StackTraceAnalyzerView
+      component: StackTraceAnalyzerView,
+      meta: {
+        title: 'Call Stacks - kedi'
+      }
     },
     {
       path: "/duplicate-strings-analyzer/:sessionId",
       name: "duplicate-strings-analyzer",
-      component: DuplicateStringsAnalyzerView
+      component: DuplicateStringsAnalyzerView,
+      meta: {
+        title: 'Duplicate Strings in Memory - kedi'
+      }
     },
     {
       path: "/large-objects-analyzer",
       name: "large-objects-analyzer",
-      component: LargeObjectsAnalyzerView
+      component: LargeObjectsAnalyzerView,
+      meta: {
+        title: 'Large Objects in Memory - kedi'
+      }
     }
   ]
+  
 });
+

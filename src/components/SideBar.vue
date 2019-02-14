@@ -62,10 +62,10 @@
             tag="li"
             :to="{ name: 'duplicate-strings-analyzer', params: {sessionId:this.$route.params.sessionId }}"
           >Duplicate Strings</router-link>
-          <router-link
+          <!-- <router-link
             tag="li"
             :to="{ name: 'large-objects-analyzer', params: {sessionId:this.$route.params.sessionId }}"
-          >Large Objects</router-link>
+          >Large Objects</router-link> -->
           <router-link
             tag="li"
             :to="{ name: 'finalizer-queue-analyzer', params: {sessionId:this.$route.params.sessionId }}"
