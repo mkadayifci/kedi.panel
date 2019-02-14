@@ -2,7 +2,7 @@
   <div class="container-fluid pt-80">
     <div>
       <i class="fa fa-paw fa-lg header-icon"></i>
-      <h5 class="d-inline-block">Large Objects Analyzer</h5>
+      <h5 class="d-inline-block">Blocking Objects</h5>
     </div>
 
     <hr>
@@ -13,7 +13,7 @@
 import TopBar from "@/components/TopBar.vue";
 
 export default {
-  name: "large-objects-analyzer",
+  name: "blocking-objects-analyzer",
   components: { TopBar },
   data: function() {
     return {

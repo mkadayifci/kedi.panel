@@ -1,6 +1,10 @@
 <template>
   <div class="container-fluid pt-80">
-    <h5>Thread List</h5>
+    <div>
+      <i class="fa fa-cogs fa-lg header-icon"></i>
+      <h5 class="d-inline-block">Thread Information</h5>
+    </div>
+
     <hr>
     <TopBar/>
     <div v-if="isLoaded" class="card alert alert-secondary pb-0">

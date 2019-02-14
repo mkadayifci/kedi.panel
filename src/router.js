@@ -15,6 +15,7 @@ import DuplicateStringsAnalyzerView from "./views/Analyzers/DuplicateStringsAnal
 import LargeObjectsAnalyzerView from "./views/Analyzers/LargeObjectsAnalyzerView.vue";
 import FinalizerQueueAnalyzerView from "./views/Analyzers/FinalizerQueueAnalyzerView.vue";
 import PinnedObjectsAnalyzerView from "./views/Analyzers/PinnedObjectsAnalyzerView.vue";
+import BlockingObjectsAnalyzerView from "./views/Analyzers/BlockingObjectsAnalyzerView.vue";
 
 
 Vue.use(Router);
@@ -67,6 +68,11 @@ export default new Router({
       path: "/exception-analyzer/:sessionId",
       name: "exception-analyzer",
       component: ExceptionAnalyzerView
+    },
+    {
+      path: "/blocking-objects-analyzer/:sessionId",
+      name: "blocking-objects-analyzer",
+      component: BlockingObjectsAnalyzerView
     },
     {
       path: "/finalizer-queue-analyzer/:sessionId",

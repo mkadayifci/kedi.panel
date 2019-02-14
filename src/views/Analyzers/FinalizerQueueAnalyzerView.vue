@@ -1,6 +1,10 @@
 <template>
   <div class="container-fluid pt-80">
-    <h5>Finalizer Queue Analyzer</h5>
+                <div>
+      <i class="fa fa-paw fa-lg header-icon"></i>
+      <h5 class="d-inline-block">Finalizer Queue Analyzer</h5>
+    </div>
+
     <hr>
     <TopBar/>
 

@@ -1,6 +1,9 @@
 <template>
   <div class="container-fluid pt-80">
-    <h5>Pinned Objects</h5>
+    <div>
+      <i class="fa fa-paw fa-lg header-icon"></i>
+      <h5 class="d-inline-block">Pinned Objects</h5>
+    </div>
     <hr>
     <TopBar/>
     <ObjectList :items="pinnedObjects" :additionalFields="additionalFields"/>

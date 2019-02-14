@@ -1,7 +1,10 @@
 <template>
   <div class="container-fluid pt-80">
     <TopBar/>
-    <h5>Summary</h5>
+    <div>
+      <i class="fa fa-file-text fa-lg header-icon"></i>
+      <h5 class="d-inline-block">Session Summary</h5>
+    </div>
     <hr>
     <div v-if="isLoaded" class="card mb-3 alert-secondary">
       <div class="card-body">

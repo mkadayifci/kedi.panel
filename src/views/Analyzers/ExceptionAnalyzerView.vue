@@ -1,6 +1,10 @@
 <template>
   <div class="container-fluid pt-80">
-    <h5>Exception Analyzer</h5>
+            <div>
+      <i class="fa fa-paw fa-lg header-icon"></i>
+      <h5 class="d-inline-block">Exception Analyzer</h5>
+    </div>
+
     <hr>
     <TopBar/>
     <template>

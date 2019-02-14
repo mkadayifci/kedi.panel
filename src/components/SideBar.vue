@@ -74,6 +74,10 @@
             tag="li"
             :to="{ name: 'pinned-objects-analyzer', params: {sessionId:this.$route.params.sessionId }}"
           >Pinned Objects</router-link>
+          <router-link
+            tag="li"
+            :to="{ name: 'blocking-objects-analyzer', params: {sessionId:this.$route.params.sessionId }}"
+          >Blocking Objects</router-link>
 
           <!-- <li>
             <a href="#">ADO.Net Best Practices</a>

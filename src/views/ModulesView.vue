@@ -1,6 +1,10 @@
 <template>
   <div class="container-fluid pt-80">
-    <h5>Modules</h5>
+    <div>
+      <i class="fa fa-cubes fa-lg header-icon"></i>
+      <h5 class="d-inline-block">Loaded Modules</h5>
+    </div>
+
     <hr>
     <TopBar/>
     <ModuleList ref="moduleList"/>

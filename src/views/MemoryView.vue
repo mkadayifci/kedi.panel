@@ -2,7 +2,10 @@
 
 <template>
   <div class="container-fluid pt-80">
-    <h5>Memory</h5>
+    <div>
+      <i class="fa fa-microchip fa-lg header-icon"></i>
+      <h5 class="d-inline-block">Memory Statistics</h5>
+    </div>
     <hr>
     <TopBar/>
     <ul class="nav nav-tabs" role="tablist">

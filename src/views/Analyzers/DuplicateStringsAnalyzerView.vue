@@ -1,6 +1,9 @@
 <template>
   <div class="container-fluid pt-80">
-    <h5>Duplicate Strings Analyzer</h5>
+    <div>
+      <i class="fa fa-paw fa-lg header-icon"></i>
+      <h5 class="d-inline-block">Duplicate Strings Analyzer</h5>
+    </div>
     <hr>
 
     <p>
@@ -78,7 +81,7 @@ export default {
         content: {
           label: "Content",
           sortable: true,
-            formatter: value => {
+          formatter: value => {
             return '"' + value + '"';
           }
         }

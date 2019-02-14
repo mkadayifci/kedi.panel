@@ -58,3 +58,8 @@ body{
   .multiselect__option {
     font-size: 12px !important;
   }
+
+  .header-icon {
+    font-size: 2em !important;
+    padding-right: 10px;
+  }

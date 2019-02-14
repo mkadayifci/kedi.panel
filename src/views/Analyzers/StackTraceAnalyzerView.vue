@@ -1,6 +1,9 @@
 <template>
   <div class="container-fluid pt-80">
-    <h5>Stack Trace Analyzer</h5>
+    <div>
+      <i class="fa fa-paw fa-lg header-icon"></i>
+      <h5 class="d-inline-block">Stack Trace Analyzer</h5>
+    </div>
     <hr>
     <TopBar/>
 
