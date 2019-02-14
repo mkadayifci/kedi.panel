@@ -1,6 +1,5 @@
 <template>
   <div class="container-fluid pt-80">
-    <TopBar/>
     <div>
       <i class="fa fa-file-text fa-lg header-icon"></i>
       <h5 class="d-inline-block">Session Summary</h5>
@@ -29,12 +28,10 @@
 </template>
 
 <script>
-import TopBar from "@/components/TopBar.vue";
 import apiGateway from "@/server-communication/api-gateway";
 
 export default {
   name: "summaryView",
-  components: { TopBar },
   data: function() {
     return {
       summary: {},

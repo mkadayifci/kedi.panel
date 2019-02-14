@@ -7,7 +7,6 @@
       <h5 class="d-inline-block">Memory Statistics</h5>
     </div>
     <hr>
-    <TopBar/>
     <ul class="nav nav-tabs" role="tablist">
       <li class="nav-item">
         <a
@@ -67,13 +66,12 @@
   </div>
 </template>
 <script>
-import TopBar from "@/components/TopBar.vue";
 import SegmentChart from "@/components/Memory/SegmentChart.vue";
 import apiGateway from "@/server-communication/api-gateway";
 import numberHelper from "@/helpers/number-helper";
 
 export default {
-  components: { TopBar, SegmentChart },
+  components: {  SegmentChart },
   methods: {
     tableRowDetailToggle: function(row) {
       row.toggleDetails();

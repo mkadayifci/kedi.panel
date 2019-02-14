@@ -5,7 +5,6 @@
       <h5 class="d-inline-block">Stack Trace Analyzer</h5>
     </div>
     <hr>
-    <TopBar/>
 
     <ul class="nav nav-tabs" role="tablist">
       <li class="nav-item">
@@ -56,13 +55,12 @@
   </div>
 </template>
 <script>
-import TopBar from "@/components/TopBar.vue";
 import numberHelper from "@/helpers/number-helper";
 import apiGateway from "@/server-communication/api-gateway";
 
 export default {
   name: "stack-trace-analyzer",
-  components: { TopBar },
+  components: {  },
   data: function() {
     return {
       exactMatchData: [],

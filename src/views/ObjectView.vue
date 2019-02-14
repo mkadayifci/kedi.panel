@@ -4,111 +4,126 @@
   <div class="container-fluid pt-80">
     <h5>Object Inspector</h5>
     <hr>
-    <TopBar/>
     <h5 v-if="isLoaded">{{this.objectDetail.typeName}} ( {{this.objectDetail.elementType}} )</h5>
     <p/>
-    <h6 v-if="isLoaded">Properties</h6>
-    <div v-if="isLoaded" class="card alert alert-secondary">
-      <div class="card-body">
-        <div class="row">
-          <div class="col-md-6">
-            <div>
-              <strong>Size:</strong>
-              {{this.formatNumber(this.objectDetail.size)}}
+
+    <ul class="nav nav-tabs" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" href="#profile" role="tab" data-toggle="tab">Object Detail</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#buzz" role="tab" data-toggle="tab">Object Referecenses</a>
+      </li>
+    </ul>
+    <div style="padding-top:10px" class="tab-content">
+      <div role="tabpanel" class="tab-pane fade in active show" id="profile">
+        <h6 v-if="isLoaded">Properties</h6>
+        <div v-if="isLoaded" class="card alert alert-secondary">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6">
+                <div>
+                  <strong>Size:</strong>
+                  {{this.formatNumber(this.objectDetail.size)}}
+                </div>
+                <div>
+                  <strong>TypeName:</strong>
+                  {{this.objectDetail.typeName}}
+                </div>
+                <div>
+                  <strong>BaseTypeName:</strong>
+                  {{this.objectDetail.baseTypeName}}
+                </div>
+                <div>
+                  <strong>Address:</strong>
+                  {{this.objectDetail.objectPointer}}
+                </div>
+                <div>
+                  <strong>HexAddress:</strong>
+                  {{this.objectDetail.hexAddress}}
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div>
+                  <strong>MethodTable:</strong>
+                  {{this.objectDetail.methodTable}}
+                </div>
+                <div>
+                  <strong>IsArray:</strong>
+                  {{this.objectDetail.isArray}}
+                </div>
+                <div>
+                  <strong>IsBoxed:</strong>
+                  {{this.objectDetail.isBoxed}}
+                </div>
+                <div>
+                  <strong>IsNull:</strong>
+                  {{this.objectDetail.isNull}}
+                </div>
+              </div>
             </div>
-            <div>
-              <strong>TypeName:</strong>
-              {{this.objectDetail.typeName}}
-            </div>
-            <div>
-              <strong>BaseTypeName:</strong>
-              {{this.objectDetail.baseTypeName}}
-            </div>
-            <div>
-              <strong>Address:</strong>
-              {{this.objectDetail.objectPointer}}
-            </div>
-            <div>
-              <strong>HexAddress:</strong>
-              {{this.objectDetail.hexAddress}}
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div>
-              <strong>MethodTable:</strong>
-              {{this.objectDetail.methodTable}}
-            </div>
-            <div>
-              <strong>IsArray:</strong>
-              {{this.objectDetail.isArray}}
-            </div>
-            <div>
-              <strong>IsBoxed:</strong>
-              {{this.objectDetail.isBoxed}}
-            </div>
-            <div>
-              <strong>IsNull:</strong>
-              {{this.objectDetail.isNull}}
+            <p/>
+            <div class="row">
+              <div class="col-md-12">
+                <div>
+                  <strong>Module:</strong>
+                  {{this.objectDetail.module}}
+                </div>
+                <div>
+                  <strong>ObjectValue:</strong>
+                  {{this.objectDetail.objectValue}}
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <p/>
-        <div class="row">
+
+        <div v-if="isLoaded" class="row">
           <div class="col-md-12">
-            <div>
-              <strong>Module:</strong>
-              {{this.objectDetail.module}}
-            </div>
-            <div>
-              <strong>ObjectValue:</strong>
-              {{this.objectDetail.objectValue}}
-            </div>
+            <template>
+              <h6>Members</h6>
+              <b-table
+                hover
+                :items="objectDetail.members"
+                :fields="fields"
+                tbody-class="tbodyOuterBeige"
+                thead-class="tHead"
+                class="table b-table table-hover table-sm"
+              >
+                <template slot="value" slot-scope="data">
+                  <router-link
+                    v-if="data.item.isObjectReference===true && data.item.elementType!=='String' && data.item.value !== 0 "
+                    right
+                    class="nav-item"
+                    tag="a"
+                    target="_blank"
+                    :to="{ name: 'object', params: {sessionId:$route.params.sessionId, objectPointer:data.item.value }}"
+                  >{{data.item.value}}</router-link>
+
+                  <span
+                    v-if="data.item.isObjectReference===false ||  data.item.elementType==='String'"
+                  >{{data.item.value}}</span>
+                </template>
+              </b-table>
+            </template>
           </div>
         </div>
       </div>
-    </div>
-
-    <div v-if="isLoaded" class="row">
-      <div class="col-md-12">
-        <template>
-          <h6>Members</h6>
-          <b-table
-            hover
-            :items="objectDetail.members"
-            :fields="fields"
-            tbody-class="tbodyOuterBeige"
-            thead-class="tHead"
-            class="table b-table table-hover table-sm"
-          >
-            <template slot="value" slot-scope="data">
-              <router-link
-                v-if="data.item.isObjectReference===true && data.item.elementType!=='String' && data.item.value !== 0 "
-                right
-                class="nav-item"
-                tag="a"
-                target="_blank"
-                :to="{ name: 'object', params: {sessionId:$route.params.sessionId, objectPointer:data.item.value }}"
-              >{{data.item.value}}</router-link>
-
-              <span
-                v-if="data.item.isObjectReference===false ||  data.item.elementType==='String'"
-              >{{data.item.value}}</span>
-            </template>
-          </b-table>
-        </template>
+      <div role="tabpanel" class="tab-pane fade" id="buzz">
       </div>
     </div>
   </div>
 </template>
 <script>
-import TopBar from "@/components/TopBar.vue";
 import apiGateway from "@/server-communication/api-gateway";
 import numberHelper from "@/helpers/number-helper";
 
 export default {
-  components: { TopBar },
+  components: {  },
   data: () => {
     return {
+      referenceData: [{ children: [] }],
+
       isLoaded: false,
       objectDetail: {},
       fields: {
@@ -137,6 +152,34 @@ export default {
   methods: {
     formatNumber: function(value) {
       return numberHelper.numberWithCommas(value);
+    },
+    generateReferenceData: function() {
+      let referencedChildren = [];
+      let referencedByChildren = [];
+
+      this.objectDetail.referencedObjects.forEach(item => {
+        referencedChildren.push({
+          text: `this -> ${item.fieldName} - ${item.address}`
+        });
+      });
+
+      this.objectDetail.referencedByObjects.forEach(item => {
+        referencedByChildren.push({
+          text: `By ${item.relatedType} (${item.baseAddress}) at field "${item.fieldName}"`
+        });
+      });
+
+
+      this.referenceData = [
+        {
+          text: `Referenced By (Parent) (${referencedByChildren.length})`,
+          nodes:referencedByChildren 
+        },
+        {
+          text: `References (Child) (${referencedChildren.length})`,
+          nodes: referencedChildren
+        }
+      ];
     }
   },
   mounted() {
@@ -146,6 +189,7 @@ export default {
       .getObject(this.$route.params.sessionId, this.$route.params.objectPointer)
       .then(response => {
         this.objectDetail = response.data;
+        this.generateReferenceData();
         this.isLoaded = true;
         this.$loadingIndicatorHelper.hide(this);
       })

@@ -6,7 +6,6 @@
     </div>
 
     <hr>
-    <TopBar/>
 
     <ul class="nav nav-tabs" role="tablist">
       <li class="nav-item">
@@ -38,13 +37,12 @@
   </div>
 </template>
 <script>
-import TopBar from "@/components/TopBar.vue";
 import ObjectList from "@/components/Common/ObjectList.vue";
 import apiGateway from "@/server-communication/api-gateway";
 
 export default {
   name: "finalizer-queue-analyzer",
-  components: { TopBar, ObjectList },
+  components: { ObjectList },
   data: function() {
     return {
       finalizableObjects: [],

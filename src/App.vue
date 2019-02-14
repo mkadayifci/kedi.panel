@@ -2,6 +2,8 @@
   <div id="app">
     <div class="container-fluid">
           <vue-progress-bar></vue-progress-bar>
+              <TopBar/>
+
       <div class="row">
         <div class="col-md-2 sideBarContainer">
           <SideBar/>
@@ -9,7 +11,9 @@
         <div class="col-md-10">
           <div>
             <div style="min-height:800px" id="routerViewContainer" class="row">
+              <transition  name="fade">
               <router-view/>
+              </transition>
             </div>
           </div>
         </div>
@@ -21,10 +25,11 @@
 require('typeface-open-sans');
 require('typeface-ubuntu-mono');
 import SideBar from "@/components/SideBar.vue";
+import TopBar from "@/components/TopBar.vue";
 
 
 export default {
-  components: { SideBar }
+  components: { SideBar,TopBar }
 };
 </script>
 

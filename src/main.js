@@ -18,7 +18,6 @@ import loadingIndicatorHelper from "@/helpers/loadingIndicator-helper";
 import Multiselect from 'vue-multiselect'
 
 
-
 window.$ = window.jQuery = require('jquery');
 
 Vue.prototype.$loadingIndicatorHelper=loadingIndicatorHelper;

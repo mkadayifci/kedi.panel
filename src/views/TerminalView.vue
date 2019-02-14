@@ -1,17 +1,15 @@
 <template>
   <div class="container-fluid pt-80">
-    <TopBar/>
     <div id="container"/>
   </div>
 </template>
 
 <script>
-import TopBar from "@/components/TopBar.vue";
 import Terminal from "@/3rd-party/termlib/index";
 
 export default {
   name: "terminal",
-  components: { TopBar },
+  components: {  },
   data: function() {
     return {
       signalRProxy: {}

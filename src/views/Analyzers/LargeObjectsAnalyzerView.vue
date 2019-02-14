@@ -6,15 +6,13 @@
     </div>
 
     <hr>
-    <TopBar/>
   </div>
 </template>
 <script>
-import TopBar from "@/components/TopBar.vue";
 
 export default {
   name: "large-objects-analyzer",
-  components: { TopBar },
+  components: {  },
   data: function() {
     return {
       modules: {}

@@ -6,17 +6,15 @@
     </div>
 
     <hr>
-    <TopBar/>
     <ModuleList ref="moduleList"/>
   </div>
 </template>
 <script>
-import TopBar from "@/components/TopBar.vue";
 import ModuleList from "@/components/Module/ModuleList.vue";
 
 export default {
   name: "modules",
-  components: { ModuleList, TopBar },
+  components: { ModuleList },
   data: function() {
     return {
       modules: {}

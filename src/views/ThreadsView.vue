@@ -6,7 +6,6 @@
     </div>
 
     <hr>
-    <TopBar/>
     <div v-if="isLoaded" class="card alert alert-secondary pb-0">
       <div class="card-body" style="padding:0px !important;">
         <div class="row">
@@ -65,7 +64,6 @@
 
 <script>
 import ThreadList from "@/components/Thread/ThreadList.vue";
-import TopBar from "@/components/TopBar.vue";
 import apiGateway from "@/server-communication/api-gateway";
 import "echarts/lib/chart/gauge";
 
@@ -127,7 +125,7 @@ export default {
     };
   },
   computed: {},
-  components: { ThreadList, TopBar },
+  components: { ThreadList },
   methods: {
     onThreadListLoaded: function() {
       this.completedProcessCount++;

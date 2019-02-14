@@ -9,7 +9,6 @@
     <p>
       <i class="fa fa-info fa-lg pr-1"></i> This analyzer inspects memory for strings that duplicates at least 2 times. This analyzer's result is limited to first 100 unique strings.
     </p>
-    <TopBar/>
     <b-table
       style="white-space: pre;"
       small
@@ -48,12 +47,11 @@
   </div>
 </template>
 <script>
-import TopBar from "@/components/TopBar.vue";
 import apiGateway from "@/server-communication/api-gateway";
 
 export default {
   name: "duplicate-strings-analyzer",
-  components: { TopBar },
+  components: {  },
   data: function() {
     return {
       baseData: [],

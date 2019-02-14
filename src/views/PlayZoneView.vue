@@ -1,6 +1,5 @@
 <template>
   <div class="container-fluid pt-80">
-    <TopBar/>
     <div>
       <i class="fa fa-gamepad fa-lg header-icon"></i>
       <h5 class="d-inline-block">Play Zone</h5>
@@ -88,12 +87,11 @@
 </template>
 
 <script>
-import TopBar from "@/components/TopBar.vue";
 import apiGateway from "@/server-communication/api-gateway";
 
 export default {
   name: "playZoneView",
-  components: { TopBar },
+  components: {  },
   data: function() {
     return {
       resultList: [],

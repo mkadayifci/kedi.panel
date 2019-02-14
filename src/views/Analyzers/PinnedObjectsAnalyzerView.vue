@@ -5,18 +5,16 @@
       <h5 class="d-inline-block">Pinned Objects</h5>
     </div>
     <hr>
-    <TopBar/>
     <ObjectList :items="pinnedObjects" :additionalFields="additionalFields"/>
   </div>
 </template>
 <script>
-import TopBar from "@/components/TopBar.vue";
 import ObjectList from "@/components/Common/ObjectList.vue";
 import apiGateway from "@/server-communication/api-gateway";
 
 export default {
   name: "pinned-objects-analyzer",
-  components: { TopBar, ObjectList },
+  components: {  ObjectList },
   data: function() {
     return {
       pinnedObjects: [],

@@ -6,7 +6,6 @@
     </div>
 
     <hr>
-    <TopBar/>
     <template>
       <b-table
         style="white-space: pre;"
@@ -37,13 +36,12 @@
   </div>
 </template>
 <script>
-import TopBar from "@/components/TopBar.vue";
 import ExceptionList from "@/components/Analyzers/Exception/ExceptionList.vue";
 import apiGateway from "@/server-communication/api-gateway";
 
 export default {
   name: "exception-analyzer",
-  components: { TopBar, ExceptionList },
+  components: {  ExceptionList },
   data: function() {
     return {
       sortDesc: true,
