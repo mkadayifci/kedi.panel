@@ -1,7 +1,7 @@
 <template>
   <li class="item">
     <div @click="toggle" @dblclick="changeType">
-      <span v-if="isFolder">[ {{open ? '-' : '+'}} ] </span>
+      <span v-if="isFolder">[{{open ? '-' : '+'}}] </span>
       
 
    <router-link v-if="model.address!==undefined"
@@ -12,12 +12,13 @@
             :to="{ name: 'object', params: {sessionId:$route.params.sessionId, objectPointer:model.address }}"
           >{{model.text}}</router-link>
 
-      <span v-else>{{model.text}}</span>
+
+      <span v-else :class="{boldStyle:model.bold}">{{model.text}}</span>
       
     </div>
 
     <ul v-show="open" v-if="isFolder">
-      <tree class="item" :model="node" v-for="node in model.nodes" :key="node.text"></tree>
+      <tree class="item" :model="node" v-for="(node,index) in model.nodes" :key="index"></tree>
       <!-- <li @click="addChild">{{model.text}}</li> -->
     </ul>
   </li>
@@ -63,7 +64,7 @@ export default {
 .item {
   cursor: pointer;
 }
-.bold {
+.boldStyle {
   font-weight: bold;
 }
 </style>

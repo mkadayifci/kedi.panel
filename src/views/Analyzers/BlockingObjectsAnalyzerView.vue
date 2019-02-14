@@ -18,8 +18,15 @@
       :items="blockingObjects"
       :fields="fields"
     >
+      <template slot="row-details" slot-scope="row">
+        <ul style="font-family:consolas">
+          <KediTree :model="row.item.treeData"></KediTree>
+        </ul>
+      </template>
+
       <template slot="show_details" slot-scope="row">
         <i
+          v-if="row.item.waiterThreads.length>0 || row.item.ownerThreads.length>0"
           @click.stop="tableRowDetailToggle(row)"
           class="tableIcon fa"
           v-bind:class="
@@ -27,15 +34,14 @@
           "
         ></i>
       </template>
-      <template slot="row-details" slot-scope="row"></template>
       <template slot="waiterThreadCount" slot-scope="data">
         <span>{{data.item.waiterThreadCount}}</span>
-                <i style="padding-left:5px;color:#d19b3d"
+        <i
+          style="padding-left:5px;color:#d19b3d"
           v-if="data.item.waiterThreadCount>0"
           class="fa fa-exclamation-triangle"
           aria-hidden="true"
         ></i>
-
       </template>
       <template slot="objectAddress" slot-scope="data">
         <router-link
@@ -51,10 +57,12 @@
 </template>
 <script>
 import apiGateway from "@/server-communication/api-gateway";
+import KediTree from "@/components/Common/KediTree.vue";
+import numberHelper from "@/helpers/number-helper";
 
 export default {
   name: "blocking-objects-analyzer",
-  components: {},
+  components: { KediTree },
   data: function() {
     return {
       blockingObjects: [],
@@ -98,13 +106,58 @@ export default {
       sortDesc: true
     };
   },
-  methods: {},
+  methods: {
+    tableRowDetailToggle: function(row) {
+      row.toggleDetails();
+    },
+    generateTreeData: function() {
+      this.blockingObjects.forEach(item => {
+        var treeData = {
+          text: "Threads",
+          nodes: [
+            {
+              bold: true,
+              text: "Owner Thread(s)",
+              nodes: item.ownerThreads.map(ownerThread => {
+                return {
+                  bold: true,
+                  text: `Thread ( ${numberHelper.decimalToHexString(
+                    ownerThread.osThreadId
+                  )} )`,
+                  nodes: ownerThread.stackTrace.map(stackFrame => {
+                    return { text: stackFrame.displayString };
+                  })
+                };
+              })
+            },
+            {
+              bold: true,
+              text: "Waiter Thread(s)",
+              nodes: item.waiterThreads.map(waiterThread => {
+                return {
+                  bold: true,
+                  text: `Thread ( ${numberHelper.decimalToHexString(
+                    waiterThread.osThreadId
+                  )} )`,
+                  nodes: waiterThread.stackTrace.map(stackFrame => {
+                    return { text: stackFrame.displayString };
+                  })
+                };
+              })
+            }
+          ]
+        };
+        item.treeData = treeData;
+      });
+    }
+  },
   mounted() {
     this.$loadingIndicatorHelper.show(this);
     apiGateway
       .getBlockingObjects(this.$route.params.sessionId)
       .then(response => {
         this.blockingObjects = response.data;
+        this.generateTreeData();
         this.$loadingIndicatorHelper.hide(this);
       })
       .catch(error => {
