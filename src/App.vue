@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <div class="container-fluid">
-          <vue-progress-bar></vue-progress-bar>
-              <TopBar/>
+      <vue-progress-bar></vue-progress-bar>
+      <TopBar/>
 
       <div class="row">
         <div class="col-md-2 sideBarContainer">
@@ -11,8 +11,8 @@
         <div class="col-md-10">
           <div>
             <div style="min-height:800px" id="routerViewContainer" class="row">
-              <transition  name="fade">
-              <router-view/>
+              <transition name="page" mode="out-in">
+                <router-view/>
               </transition>
             </div>
           </div>
@@ -22,28 +22,40 @@
   </div>
 </template>
 <script>
-require('typeface-open-sans');
-require('typeface-ubuntu-mono');
+require("typeface-open-sans");
+require("typeface-ubuntu-mono");
 import SideBar from "@/components/SideBar.vue";
 import TopBar from "@/components/TopBar.vue";
 
-
 export default {
-  components: { SideBar,TopBar }
+  components: { SideBar, TopBar }
 };
 </script>
 
 
 <style>
 #app {
-  font-family: "Open Sans","Avenir", Helvetica, Arial, sans-serif;
+  font-family: "Open Sans", "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 13px;
   color: #111111;
-  
+}
+.page-leave-active {
+  transition: opacity 0.1s, transform 0.1s;
+}
+.page-enter-active{
+    transition: opacity 0.2s, transform 0.2s;
 }
 
-
+.page-enter
+{
+  opacity: 0;
+  transform: translateX(30%);
+}
+.page-leave-to {
+  opacity: 0;
+  transform: translateX(-30%);
+}
 </style>
 
