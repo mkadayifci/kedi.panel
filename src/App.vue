@@ -45,17 +45,17 @@ export default {
   transition: opacity 0.1s, transform 0.1s;
 }
 .page-enter-active{
-    transition: opacity 0.2s, transform 0.2s;
+    transition: opacity 0.1s, transform 0.1s;
 }
 
 .page-enter
 {
   opacity: 0;
-  transform: translateX(30%);
+  transform: translateY(-30%);
 }
 .page-leave-to {
   opacity: 0;
-  transform: translateX(-30%);
+  transform: translateY(+30%);
 }
 </style>
 
