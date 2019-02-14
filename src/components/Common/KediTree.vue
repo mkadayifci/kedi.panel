@@ -1,7 +1,7 @@
 <template>
   <li class="item">
     <div @click="toggle" @dblclick="changeType">
-      <span v-if="isFolder">[ {{open ? '-' : '+'}} ]</span>
+      <span v-if="isFolder">[ {{open ? '-' : '+'}} ] </span>
       
 
    <router-link v-if="model.address!==undefined"
