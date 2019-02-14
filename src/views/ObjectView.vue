@@ -110,6 +110,9 @@
         </div>
       </div>
       <div role="tabpanel" class="tab-pane fade" id="buzz">
+        <ul style="font-size:1.1em">
+          <KediTree :model="referenceData"></KediTree>
+        </ul>
       </div>
     </div>
   </div>
@@ -117,9 +120,10 @@
 <script>
 import apiGateway from "@/server-communication/api-gateway";
 import numberHelper from "@/helpers/number-helper";
+import KediTree from "@/components/Common/KediTree.vue";
 
 export default {
-  components: {  },
+  components: { KediTree },
   data: () => {
     return {
       referenceData: [{ children: [] }],
@@ -159,27 +163,33 @@ export default {
 
       this.objectDetail.referencedObjects.forEach(item => {
         referencedChildren.push({
-          text: `this -> ${item.fieldName} - ${item.address}`
+          text: `this -> ${item.fieldName} - ${item.address}`,
+          address:item.address
         });
       });
 
       this.objectDetail.referencedByObjects.forEach(item => {
         referencedByChildren.push({
-          text: `By ${item.relatedType} (${item.baseAddress}) at field "${item.fieldName}"`
+          text: `By ${item.relatedType} (${item.baseAddress}) at field "${
+            item.fieldName
+          }"`,
+          address:item.baseAddress
         });
       });
 
-
-      this.referenceData = [
-        {
-          text: `Referenced By (Parent) (${referencedByChildren.length})`,
-          nodes:referencedByChildren 
-        },
-        {
-          text: `References (Child) (${referencedChildren.length})`,
-          nodes: referencedChildren
-        }
-      ];
+      this.referenceData = {
+        text: "Reference Tree",
+        nodes: [
+          {
+            text: `Referenced By (Parent) (${referencedByChildren.length})`,
+            nodes: referencedByChildren
+          },
+          {
+            text: `References (Child) (${referencedChildren.length})`,
+            nodes: referencedChildren
+          }
+        ]
+      };
     }
   },
   mounted() {
