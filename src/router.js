@@ -8,6 +8,11 @@ import TerminalView from "./views/TerminalView.vue";
 import MemoryView from "./views/MemoryView.vue";
 import WelcomeView from "./views/WelcomeView.vue";
 import PlayZoneView from "./views/PlayZoneView.vue";
+import OpenFileView from "./views/OpenFileView.vue";
+
+
+
+
 
 import ExceptionAnalyzerView from "./views/Analyzers/ExceptionAnalyzerView.vue";
 import StackTraceAnalyzerView from "./views/Analyzers/StackTraceAnalyzerView.vue";
@@ -16,7 +21,6 @@ import LargeObjectsAnalyzerView from "./views/Analyzers/LargeObjectsAnalyzerView
 import FinalizerQueueAnalyzerView from "./views/Analyzers/FinalizerQueueAnalyzerView.vue";
 import PinnedObjectsAnalyzerView from "./views/Analyzers/PinnedObjectsAnalyzerView.vue";
 import BlockingObjectsAnalyzerView from "./views/Analyzers/BlockingObjectsAnalyzerView.vue";
-
 
 Vue.use(Router);
 
@@ -28,9 +32,18 @@ export default new Router({
       component: WelcomeView,
       alias: "/",
       meta: {
-        title: 'About Page - Example App'
+        title: 'Welcome - kedi'
       }
     },
+    {
+      path: "/open-file/",
+      name: "open-file",
+      component: OpenFileView,
+      meta: {
+        title: 'Open File - kedi'
+      }
+    },
+
     {
       path: "/summary/:sessionId",
       name: "summary",

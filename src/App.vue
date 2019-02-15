@@ -5,10 +5,10 @@
       <TopBar/>
 
       <div class="row">
-        <div class="col-md-2 sideBarContainer">
+        <div v-if="isSideBarVisible" class="col-md-2 sideBarContainer">
           <SideBar/>
         </div>
-        <div class="col-md-10">
+        <div :class="{'col-md-10':isSideBarVisible,'col-md-12':!isSideBarVisible}">
           <div>
             <div style="min-height:800px" id="routerViewContainer" class="row">
               <transition name="page" mode="out-in">
@@ -28,7 +28,14 @@ import SideBar from "@/components/SideBar.vue";
 import TopBar from "@/components/TopBar.vue";
 
 export default {
-  components: { SideBar, TopBar }
+  components: { SideBar, TopBar },
+  methods: {},
+  computed: {
+    isSideBarVisible: function() {
+      var hideInThesePages = ["/", "/welcome", "/open-file"];
+      return !hideInThesePages.includes(this.$route.path);
+    }
+  }
 };
 </script>
 
@@ -44,12 +51,11 @@ export default {
 .page-leave-active {
   transition: opacity 0.1s, transform 0.1s;
 }
-.page-enter-active{
-    transition: opacity 0.1s, transform 0.1s;
+.page-enter-active {
+  transition: opacity 0.1s, transform 0.1s;
 }
 
-.page-enter
-{
+.page-enter {
   opacity: 0;
   transform: translateY(-30%);
 }

@@ -1,24 +1,23 @@
 <template>
   <div class="container-fluid pt-80">
-    <h5>Welcome</h5>
+    <h5>Open File</h5>
 
-    Welcome to the kedi analyzer. You can open a .NET memory dump file and inspect it.
     <hr>
 
-    <LoginView/>
+    <file-manager/>
   </div>
 </template>
 
 <script>
-import LoginView from "@/components/Welcome/Login.vue";
+import FileManager from "@/components/Common/FileManager.vue";
 
 export default {
-  name: "welcome",
+  name: "open-file",
   data: function() {
     return {};
   },
   computed: {},
-  components: { LoginView },
+  components: {  FileManager },
   methods: {},
   mounted() {}
 };

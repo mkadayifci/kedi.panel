@@ -69,7 +69,14 @@ export default new class ApiGateway {
         return axios
             .get(`${this.hostProtocolSection}${this.urlPrefix}/play-zone/results/${sessionId}`, { params: { queryValue: searchValue, type: types } });
     }
+    getFileSystemInfo(path) {
+        if (path === undefined || path === "") {
+            path = "~";
+        }
 
+        return axios
+            .get(`${this.hostProtocolSection}${this.urlPrefix}/file-system/`, { params: { path: path } });
+    }
 
 
 }
