@@ -1,8 +1,15 @@
 import axios from 'axios'
 
 export default new class ApiGateway {
-    hostProtocolSection = "http://localhost:9000";
+    hostProtocolSection = "http://localhost:5334";
     urlPrefix = "/api";
+
+    constructor() {
+        if (process.env.NODE_ENV === 'production') {
+            this.hostProtocolSection = "";
+        }
+    }
+
 
     getObject(sessionId, objectPointer) {
         return axios
