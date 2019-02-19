@@ -12,6 +12,7 @@ export default new class ApiGateway {
         }
         axios.interceptors.response.use(null, function (error) {
 
+            window.vueInstance.$logger.submitException(error);
             if (!error.response) {
                 console.log("Network err")
                 window.vueInstance.$errNotifier("Error", "Network error! Couldn't reach the host application.");

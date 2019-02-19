@@ -1,8 +1,6 @@
 <template>
   <div class="container-fluid pt-80">
-    <h5>Welcome</h5>
-
-    Welcome to the kedi analyzer. You can open a .NET memory dump file and inspect it.
+    <h5>Welcome</h5>Welcome to the kedi analyzer. You can open a .NET memory dump file and inspect it.
     <hr>
 
     <LoginView/>
@@ -20,7 +18,12 @@ export default {
   computed: {},
   components: { LoginView },
   methods: {},
-  mounted() {}
+  mounted() {
+    let sessionId = localStorage.getItem("sessionId");
+    if (sessionId) {
+      this.$router.push({ name: "summary", params: { sessionId: sessionId } });
+    }
+  }
 };
 </script>
 

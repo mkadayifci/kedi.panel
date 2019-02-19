@@ -7,6 +7,7 @@ import "font-awesome/css/font-awesome.css"
 import "vue-multiselect/dist/vue-multiselect.min.css"
 import "@/assets/css/custom.css"
 import "vuejs-dialog/dist/vuejs-dialog.min.css"
+
 import Vue from "vue";
 import App from "./App.vue";
 import BootstrapVue from "bootstrap-vue";
@@ -20,10 +21,15 @@ import Multiselect from 'vue-multiselect'
 import VuejsDialog from "vuejs-dialog"
 import Notifications from 'vue-notification'
 
-
 window.$ = window.jQuery = require('jquery');
 
 Vue.prototype.$loadingIndicatorHelper = loadingIndicatorHelper;
+
+
+var client = require('exceptionless').ExceptionlessClient.default;
+client.config.apiKey = '80I0edYzAusnEtY57jVIMf1lfYee7ZmvSG2kmAgn';
+Vue.prototype.$logger=client;
+
 
 Vue.use(Loading);
 Vue.use(VueProgressBar, { color: 'black', failedColor: 'red', thickness: '5px', autoFinish: false })
