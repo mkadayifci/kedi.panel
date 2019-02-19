@@ -20,7 +20,7 @@
 }
 
 .sideBarContainer {
-  z-index: 10000;
+  z-index: 4500;
   padding-right: 0px;
   padding-left: 0px;
   background-color: #181818;
@@ -62,4 +62,29 @@ body {
 .header-icon {
   font-size: 2em !important;
   padding-right: 10px;
+}
+
+
+
+.dg-btn--ok{
+  color: #fefefe !important;
+  background-color: #dc3545 !important;
+  border-color: #dc3545 !important;
+
+}
+
+.dg-btn--cancel {
+  color: #dc3545 !important;
+  border-color: #dc3545 !important;
+  background-color:  #fefefe  !important;
+}
+.dg-content { 
+  font-size: 14px !important;
+}
+
+.dg-main-content {
+ font-family: "Open-Sans",'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+}
+.dg-btn {
+  font-size: 14px !important;
 }

@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Router from "vue-router";
+
 import ThreadsView from "./views/ThreadsView.vue";
 import SummaryView from "./views/SummaryView.vue";
 import ModulesView from "./views/ModulesView.vue";
@@ -9,10 +10,6 @@ import MemoryView from "./views/MemoryView.vue";
 import WelcomeView from "./views/WelcomeView.vue";
 import PlayZoneView from "./views/PlayZoneView.vue";
 import OpenFileView from "./views/OpenFileView.vue";
-
-
-
-
 
 import ExceptionAnalyzerView from "./views/Analyzers/ExceptionAnalyzerView.vue";
 import StackTraceAnalyzerView from "./views/Analyzers/StackTraceAnalyzerView.vue";
@@ -24,7 +21,7 @@ import BlockingObjectsAnalyzerView from "./views/Analyzers/BlockingObjectsAnalyz
 
 Vue.use(Router);
 
-export default new Router({
+let router = new Router({
   routes: [
     {
       path: "/welcome/",
@@ -159,6 +156,20 @@ export default new Router({
       }
     }
   ]
-  
+
 });
 
+
+router.beforeEach((to, from, next) => {
+  let openedFile = localStorage.getItem("openedFile");
+  if (!openedFile &&
+    to.path !== "/open-file") {
+      console.log("Forced To Open File")
+      next("/open-file");
+  } else {
+    document.title = to.meta.title;
+    next();
+  }
+});
+
+export default router;

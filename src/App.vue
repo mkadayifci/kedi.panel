@@ -3,7 +3,14 @@
     <div class="container-fluid">
       <vue-progress-bar></vue-progress-bar>
       <TopBar/>
-
+      <notifications
+        style="z-index:15000"
+        type="error"
+        :duration=5000
+        position="bottom left"
+        group="foo"
+        width="400px"
+      />
       <div class="row">
         <div v-if="isSideBarVisible" class="col-md-2 sideBarContainer">
           <SideBar/>
