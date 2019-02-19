@@ -24,7 +24,6 @@ export default {
       wrapping: true,
       ps: "kedi~$"
     });
-    console.log(term);
     term.open();
     let that = this;
     function termHandler() {

@@ -1,5 +1,7 @@
 <template>
   <div>
+    
+
     <div @click="getPathContent('[ThisPC]')" class="specialButton">
       <i class="fa fa-laptop" aria-hidden="true"></i>
       <span>This PC</span>
@@ -29,7 +31,6 @@
         >{{pathItem.name}}</li>
       </ol>
     </nav>
-
     <div class="row">
       <div class="col-md-6" v-for="entry in fileSystemResult.entries" :key="entry.path">
         <div
@@ -64,17 +65,17 @@ export default {
         .getFileSystemInfo(path)
         .then(response => {
           this.fileSystemResult = response.data;
-          localStorage.setItem("lastLocation",path);
+          localStorage.setItem("lastLocation", path);
           this.$loadingIndicatorHelper.hide(this);
         })
         .catch(error => {
           this.$loadingIndicatorHelper.hide(this);
-          this.$errNotifier("Communication Error",error.message);
+          this.$errNotifier("Communication Error", error.message);
         });
     },
     itemClicked: function(path, isFile, itLooksLikeDump) {
       if (itLooksLikeDump === true) {
-        this.$emit("on-dumpfile-clicked", this,path);
+        this.$emit("on-dumpfile-clicked", this, path);
       } else if (isFile) {
         return;
       } else {

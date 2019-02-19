@@ -21,9 +21,9 @@ export default {
   components: { FileManager },
   methods: {
     onDumpFileClicked: function(source, filePath) {
-      let openedFile = localStorage.getItem("openedFile");
+      let currentSession = JSON.parse(localStorage.getItem("currentSession"));
 
-      if (openedFile) {
+      if (currentSession) {
         let self = this;
         this.$dialog
           .confirm("This will close current dump file! Do you want to proceed?")
@@ -36,31 +36,36 @@ export default {
       }
     },
     createSession: function(filePath) {
+      this.$loadingIndicatorHelper.show(this);
       apiGateway
         .closeAllSessions()
         .then(closeResponse => {
           apiGateway
             .createSession(filePath)
             .then(response => {
-              localStorage.setItem("sessionId", response.data);
-              localStorage.setItem("openedFile", filePath);
+              localStorage.setItem(
+                "currentSession",
+                JSON.stringify({
+                  filePath: filePath,
+                  sessionId: response.data
+                })
+              );
+              this.$loadingIndicatorHelper.hide(this);
               this.$router.push({
                 name: "summary",
                 params: { sessionId: response.data }
               });
             })
             .catch(error => {
-              console.log(error);
+              this.$loadingIndicatorHelper.hide(this);
             });
         })
         .catch(error => {
-          console.log(error);
+          this.$loadingIndicatorHelper.hide(this);
         });
     }
   },
-  mounted() {
-    console.log(this);
-  }
+  mounted() {}
 };
 </script>
 

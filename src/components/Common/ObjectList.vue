@@ -51,7 +51,6 @@ export default {
     if(this.additionalFields!==undefined){
       this.fields = {...this.fields , ...this.additionalFields};
     }
-    console.log(this.fields);
   }
 };
 </script>

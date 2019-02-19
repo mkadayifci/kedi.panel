@@ -41,7 +41,6 @@ export default {
       if (this.isFolder) {
         this.open = !this.open;
       }
-      console.log(this.open);
     },
     addChild() {
       //   this.model.nodes.push({

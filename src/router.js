@@ -161,10 +161,9 @@ let router = new Router({
 
 
 router.beforeEach((to, from, next) => {
-  let openedFile = localStorage.getItem("openedFile");
-  if (!openedFile &&
+  let currentSession = JSON.parse( localStorage.getItem("currentSession"));
+  if (!currentSession &&
     to.path !== "/open-file") {
-      console.log("Forced To Open File")
       next("/open-file");
   } else {
     document.title = to.meta.title;

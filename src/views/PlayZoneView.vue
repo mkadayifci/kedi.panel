@@ -144,12 +144,9 @@ export default {
         })
         .catch(error => {});
 
-      console.log(this.typesValue);
     },
     getResults: function() {
       this.$loadingIndicatorHelper.showProgress(this);
-      console.log(this.searchValue);
-      console.log(this.typesValue);
       apiGateway
         .getPlayZoneResults(
           this.$route.params.sessionId,

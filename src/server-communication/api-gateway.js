@@ -4,8 +4,6 @@ export default new class ApiGateway {
     hostProtocolSection = "http://localhost:5334";
     urlPrefix = "/api";
 
-
-
     constructor() {
         if (process.env.NODE_ENV === 'production') {
             this.hostProtocolSection = "";
@@ -14,14 +12,12 @@ export default new class ApiGateway {
 
             window.vueInstance.$logger.submitException(error);
             if (!error.response) {
-                console.log("Network err")
                 window.vueInstance.$errNotifier("Error", "Network error! Couldn't reach the host application.");
             }
             else if (error.response.status === 500) {
                 switch (error.response.data.subCode) {
                     case 100://Host application didn't find the session Id, we must open file manager to create new session.
-                        localStorage.removeItem("sessionId");
-                        localStorage.removeItem("openedFile");
+                        localStorage.removeItem("currentSession");
                         window.vueInstance.$errNotifier("Session Error", "Host application couldn't find session in the memory. Please select a dump file to start inspection.");
                         window.vueInstance.$router.push({ name: "open-file" });
                         break;
@@ -31,6 +27,7 @@ export default new class ApiGateway {
             return Promise.reject(error);
         });
     }
+    
     getObject(sessionId, objectPointer) {
         return axios
             .get(`${this.hostProtocolSection}${this.urlPrefix}/object/${sessionId}/${objectPointer}`);

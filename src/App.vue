@@ -2,7 +2,7 @@
   <div id="app">
     <div class="container-fluid">
       <vue-progress-bar></vue-progress-bar>
-      <TopBar/>
+      <TopBar />
       <notifications
         style="z-index:15000"
         type="error"
@@ -52,7 +52,7 @@ export default {
   font-family: "Open Sans", "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-size: 13px;
+  font-size: 12px;
   color: #111111;
 }
 .page-leave-active {

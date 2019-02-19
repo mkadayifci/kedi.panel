@@ -110,7 +110,7 @@
 .nav-side-menu {
   position: sticky;
   overflow: auto;
-  font-size: 14px;
+  font-size: 1.1em;
   background-color: #181818;
   top: 60px;
   left: 0px;

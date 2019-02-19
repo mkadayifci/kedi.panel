@@ -3,10 +3,11 @@
     <a class="navbar-brand navBrandCustom" href="#">
       <img class="logo" :src="require('@/assets/images/logo-mini.png')">
       <span class="logoTitle">kedi analyzer</span>
+      <span v-if="currentFileName" class="activeFileLabel">({{currentFileName}})</span>
     </a>
     <div class="form-inline my-2 my-lg-0">
       <button
-      v-if="$route.name!=='open-file'"
+        v-if="$route.name!=='open-file'"
         type="button"
         @click="closeActiveSession"
         class="btn btn-dark btn-sm"
@@ -22,9 +23,19 @@ export default {
   //#a6c!important
   name: "top-bar",
   components: {},
+  computed: {
+    currentFileName: function() {
+      let currentSession = JSON.parse(localStorage.getItem("currentSession"));
+      if (currentSession) {
+        return currentSession.filePath.split("\\").pop();
+      }
+      return null;
+    }
+  },
+  watch: {},
   methods: {
     closeActiveSession: function() {
-      this.$router.push({name:"open-file"});
+      this.$router.push({ name: "open-file" });
     }
   }
 };
@@ -44,6 +55,11 @@ export default {
 }
 .logoTitle {
   padding-left: 5px;
+}
+
+.activeFileLabel {
+  font-size: 0.8rem !important;
+  padding-left: 10px;
 }
 </style>
 

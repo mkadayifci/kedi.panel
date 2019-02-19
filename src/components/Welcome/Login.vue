@@ -132,7 +132,6 @@ export default {
   name: "LoginView",
   methods: {
     signUp: function() {
-      console.log("signup");
     }
   }
 };
