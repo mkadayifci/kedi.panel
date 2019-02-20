@@ -1,7 +1,5 @@
 <template>
   <div>
-    
-
     <div @click="getPathContent('[ThisPC]')" class="specialButton">
       <i class="fa fa-laptop" aria-hidden="true"></i>
       <span>This PC</span>
@@ -85,8 +83,13 @@ export default {
   },
   mounted: function() {
     let lastLocation = localStorage.getItem("lastLocation");
-
-    this.getPathContent(lastLocation);
+    
+    if (lastLocation) {
+      this.getPathContent(lastLocation);
+    } else {
+      localStorage.removeItem("lastLocation");
+      this.getPathContent();
+    }
   }
 };
 </script>

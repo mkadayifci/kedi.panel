@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Router from "vue-router";
+import apiGateway from "@/server-communication/api-gateway";
 
 import ThreadsView from "./views/ThreadsView.vue";
 import SummaryView from "./views/SummaryView.vue";
@@ -161,6 +162,7 @@ let router = new Router({
 
 
 router.beforeEach((to, from, next) => {
+  apiGateway.cancelAllConnections();
   let currentSession = JSON.parse( localStorage.getItem("currentSession"));
   if (!currentSession &&
     to.path !== "/open-file") {
