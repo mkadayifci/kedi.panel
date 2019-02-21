@@ -141,7 +141,7 @@ export default {
   mounted() {
     this.completedProcessCount = 0;
     this.$loadingIndicatorHelper.show(this);
-    this.$refs.threadList.list();
+    
 
     apiGateway
       .getThreadPoolDetail(this.$route.params.sessionId)
@@ -149,7 +149,7 @@ export default {
         this.threadPoolDetail = response.data;
         this.option.series[0].data[0].value = this.threadPoolDetail.cpuUtilization;
         this.completedProcessCount++;
-        this.checkToHideLoadingStuff();
+        this.$refs.threadList.list();
       })
       .catch(error => {
         this.threadPoolDetail = {};

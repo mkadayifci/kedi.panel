@@ -46,11 +46,57 @@
           "
               ></i>
             </template>
-            <template slot="row-details" slot-scope="row">{{row.item.seenInThreads}}</template>
+            <template slot="row-details" slot-scope="row">
+              <strong style="padding-left: 2px;padding-bottom: 5px;">Seen in these threads (OS Id)</strong>
+              <div
+                class="row"
+                style="background-color:white;border-radius: 5px;margin: 0px !important;padding: 2px;"
+              >
+                <div
+                  class="col-md-1"
+                  v-for="item in row.item.seenInThreads"
+                  :key="item"
+                >{{getFormattedThreadId(item)}}</div>
+              </div>
+            </template>
           </b-table>
         </template>
       </div>
-      <div role="tabpanel" class="tab-pane fade" id="buzz"></div>
+      <div role="tabpanel" class="tab-pane fade" id="buzz">
+        <b-table
+          small
+          hover
+          :items="exactMatchList"
+          :fields="exactMatchFields"
+          tbody-class="tbodyOuterBeige"
+          thead-class="tHead"
+        >
+          <template slot="show_details" slot-scope="row">
+            <i
+              @click.stop="tableRowDetailToggle(row)"
+              class="tableIcon fa"
+              v-bind:class="
+          row.detailsShowing ? 'fa-minus-square' : 'fa-plus-square'
+          "
+            ></i>
+          </template>
+          <template slot="row-details" slot-scope="row">
+            <div
+              class="row"
+              style="background-color:white;border-radius: 5px;margin: 0px !important;padding: 2px;"
+            >
+              <ul style="font-family:consolas; list-style-type: none;padding-left:0px">
+                <li
+                  style="white-space:pre"
+                  class="col-md-1"
+                  v-for="(item,index) in row.item.callStack"
+                  :key="index"
+                >{{" ".repeat(index) + item}}</li>
+              </ul>
+            </div>
+          </template>
+        </b-table>
+      </div>
     </div>
   </div>
 </template>
@@ -60,10 +106,30 @@ import apiGateway from "@/server-communication/api-gateway";
 
 export default {
   name: "stack-trace-analyzer",
-  components: {  },
+  components: {},
   data: function() {
     return {
       exactMatchData: [],
+      exactMatchList: [],
+      exactMatchFields: {
+        show_details: {
+          label: "",
+          tdClass: "tableDetailColumn"
+        },
+        numberOfThreads:{
+          label: "# Threads",
+        },
+        osThreadIds: {
+          label: "OS Thread Ids",
+          formatter: value => {
+            return value
+              .map(item => {
+                return numberHelper.decimalToHexString(item);
+              })
+              .join(", ");
+          }
+        }
+      },
       callCountList: [],
       callCountFields: {
         show_details: {
@@ -82,13 +148,6 @@ export default {
           label: "Method",
           sortable: true
         },
-        seenInThreads: {
-          label: "Seen in threads (OS Id)",
-          sortable: true,
-          formatter: value => {
-            return value;
-          }
-        },
         moduleName: {
           label: "Module Name",
           sortable: true
@@ -99,6 +158,9 @@ export default {
   methods: {
     tableRowDetailToggle: function(row) {
       row.toggleDetails();
+    },
+    getFormattedThreadId(id) {
+      return numberHelper.decimalToHexString(id);
     }
   },
   mounted() {
@@ -107,7 +169,7 @@ export default {
       .getStackTraceAnalyze(this.$route.params.sessionId)
       .then(response => {
         this.callCountList = response.data.methodHitData;
-        this.exactMatchData = response.data.exactMatchData;
+        this.exactMatchList = response.data.exactMatchData;
 
         this.$loadingIndicatorHelper.hide(this);
       })

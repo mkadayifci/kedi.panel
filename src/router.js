@@ -11,6 +11,8 @@ import MemoryView from "./views/MemoryView.vue";
 import WelcomeView from "./views/WelcomeView.vue";
 import PlayZoneView from "./views/PlayZoneView.vue";
 import OpenFileView from "./views/OpenFileView.vue";
+import OpenSourceLicenseView from "./views/OpenSourceLicenseView.vue";
+
 
 import ExceptionAnalyzerView from "./views/Analyzers/ExceptionAnalyzerView.vue";
 import StackTraceAnalyzerView from "./views/Analyzers/StackTraceAnalyzerView.vue";
@@ -155,7 +157,16 @@ let router = new Router({
       meta: {
         title: 'Large Objects in Memory - kedi'
       }
+    },
+    {
+      path: "/open-source-license-information",
+      name: "open-source-license-information",
+      component: OpenSourceLicenseView,
+      meta: {
+        title: 'License Information - kedi'
+      }
     }
+
   ]
 
 });

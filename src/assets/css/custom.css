@@ -14,6 +14,17 @@
   background-color: #181818;
   color: white;
 }
+.tableIcon {
+  font-size: 18px;
+  cursor: pointer;
+  color: darkgoldenrod;
+}
+
+table {
+  border-collapse: collapse;
+  border-radius: 5px;
+  overflow: hidden;
+}
 
 .tableMinColWidth {
   width: 1px !important;
@@ -64,27 +75,26 @@ body {
   padding-right: 10px;
 }
 
-
-
-.dg-btn--ok{
+.dg-btn--ok {
   color: #fefefe !important;
   background-color: #dc3545 !important;
   border-color: #dc3545 !important;
-
 }
 
 .dg-btn--cancel {
   color: #dc3545 !important;
   border-color: #dc3545 !important;
-  background-color:  #fefefe  !important;
+  background-color: #fefefe !important;
 }
-.dg-content { 
+
+.dg-content {
   font-size: 14px !important;
 }
 
 .dg-main-content {
- font-family: "Open-Sans",'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+  font-family: "Open-Sans", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
 }
+
 .dg-btn {
   font-size: 14px !important;
 }

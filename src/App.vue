@@ -39,7 +39,7 @@ export default {
   methods: {},
   computed: {
     isSideBarVisible: function() {
-      var hideInThesePages = ["/", "/welcome", "/open-file"];
+      var hideInThesePages = ["/", "/welcome", "/open-file","/open-source-license-information"];
       return !hideInThesePages.includes(this.$route.path);
     }
   }

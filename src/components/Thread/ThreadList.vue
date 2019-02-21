@@ -145,9 +145,5 @@ export default {
 </script>
 
 <style>
-.tableIcon {
-  font-size: 18px;
-  cursor: pointer;
-  color: gray;
-}
+
 </style>

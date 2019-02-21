@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <div>
     <div v-if="debugModeModuleCount==1" class="alert alert-danger" role="alert">
       <i
         style="font-size: 1.4rem; padding-right: 20px;"

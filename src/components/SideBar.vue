@@ -93,7 +93,7 @@
         </router-link>
       </ul>
     </div>
-    <div class="fixed-bottom" style="padding-left: 34px;padding-bottom:5px;font-size:0.75rem">
+    <div class="fixed-bottom" style="padding-left: 34px;padding-bottom:5px;font-size:0.6rem">
       <div class="row">
         <span>website :&nbsp;&nbsp;</span>
         <a style="color:gray" target="_blank" href="https://www.kedi-analyzer.com">kedi-analyzer.com</a>
@@ -101,6 +101,11 @@
       <div class="row">
         <span>e-mail :&nbsp;&nbsp;</span>
         <a style="color:gray" href="mailto:mehmet@kadayifci.ch">mehmet@kadayifci.ch</a>
+      </div>
+      <div class="row">
+        <span>open-source :&nbsp;&nbsp;</span>
+
+        <router-link target="_blank" tag="a" :to="{ name: 'open-source-license-information'}">license info</router-link>
       </div>
     </div>
   </div>
