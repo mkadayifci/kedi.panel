@@ -31,7 +31,7 @@ table {
 }
 
 .sideBarContainer {
-  z-index: 4500;
+  z-index: 998;
   padding-right: 0px;
   padding-left: 0px;
   background-color: #181818;
@@ -97,4 +97,11 @@ body {
 
 .dg-btn {
   font-size: 14px !important;
+}
+
+
+.modal-header {
+padding: 0.5rem 1rem !important;
+background-color:  #d19b3d !important;
+
 }
