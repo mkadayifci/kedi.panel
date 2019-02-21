@@ -46,16 +46,6 @@
             :fields="statsFields"
             :items="statsItems"
           >
-            <template slot="show_details" slot-scope="row">
-              <i
-                @click.stop="tableRowDetailToggle(row)"
-                class="tableIcon fa"
-                v-bind:class="
-          row.detailsShowing ? 'fa-minus-square' : 'fa-plus-square'
-          "
-              ></i>
-            </template>
-            <template slot="row-details" slot-scope="row">{{row}}</template>
           </b-table>
         </template>
       </div>

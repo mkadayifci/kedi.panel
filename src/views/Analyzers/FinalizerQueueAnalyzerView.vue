@@ -28,7 +28,7 @@
             class="fa fa-info"
             aria-hidden="true"
           ></i>
-          <span>There is no object in finalizer queue.</span>
+          <span>There is no object in the finalizer queue.</span>
         </div>
 
         <ObjectList v-if="objectsInFinalizerQueue.length>0"  :items="objectsInFinalizerQueue"/>

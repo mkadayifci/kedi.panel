@@ -25,7 +25,7 @@ export default {
   components: {},
   computed: {
     currentFileName: function() {
-      let currentSession = JSON.parse(localStorage.getItem("currentSession"));
+      let currentSession =  this.$store.getters.currentSession;
       if (currentSession) {
         return currentSession.filePath.split("\\").pop();
       }

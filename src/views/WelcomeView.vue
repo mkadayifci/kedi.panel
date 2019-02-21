@@ -19,7 +19,8 @@ export default {
   components: { LoginView },
   methods: {},
   mounted() {
-    let currentSession = JSON.parse( localStorage.getItem("currentSession"));
+    
+    let currentSession = this.$store.currentSession;
     if (currentSession) {
       this.$router.push({ name: "summary", params: { sessionId: currentSession.sessionId } });
     }

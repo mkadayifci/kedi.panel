@@ -140,7 +140,7 @@ export default new class ApiGateway {
                     cancelToken: this.source.token
                 });
     }
-    getSessions(sessionId, types, searchValue) {
+    getSessions() {
         return axios
             .get(`${this.hostProtocolSection}${this.urlPrefix}/sessions`,
                 {
@@ -154,9 +154,20 @@ export default new class ApiGateway {
                     path: path
                 });
     }
-    closeAllSessions(path) {
+    closeAllSessions() {
         return axios
             .post(`${this.hostProtocolSection}${this.urlPrefix}/session/close-all`);
+    }
+    commitFeedback(name, emailAddress, content) {
+        return axios
+            .post("https://www.kedi-analyzer.com/wp-json/wp/v2/comments", null, {
+                params: {
+                    author_name: name,
+                    author_email: emailAddress,
+                    content: content,
+                    post: 165
+                }
+            });
     }
 
 

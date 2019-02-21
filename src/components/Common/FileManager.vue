@@ -63,7 +63,7 @@ export default {
         .getFileSystemInfo(path)
         .then(response => {
           this.fileSystemResult = response.data;
-          localStorage.setItem("lastLocation", path);
+          this.$store.commit("lastLocation", path);
           this.$loadingIndicatorHelper.hide(this);
         })
         .catch(error => {
@@ -82,12 +82,11 @@ export default {
     }
   },
   mounted: function() {
-    let lastLocation = localStorage.getItem("lastLocation");
-    
+    let lastLocation = this.$store.getters.lastLocation;
+
     if (lastLocation) {
       this.getPathContent(lastLocation);
     } else {
-      localStorage.removeItem("lastLocation");
       this.getPathContent();
     }
   }

@@ -21,7 +21,7 @@ export default {
   components: { FileManager },
   methods: {
     onDumpFileClicked: function(source, filePath) {
-      let currentSession = JSON.parse(localStorage.getItem("currentSession"));
+      let currentSession = this.$store.getters.currentSession;
 
       if (currentSession) {
         let self = this;
@@ -43,13 +43,11 @@ export default {
           apiGateway
             .createSession(filePath)
             .then(response => {
-              localStorage.setItem(
-                "currentSession",
-                JSON.stringify({
-                  filePath: filePath,
-                  sessionId: response.data
-                })
-              );
+              this.$store.commit("currentSession", {
+                filePath: filePath,
+                sessionId: response.data
+              });
+
               this.$loadingIndicatorHelper.hide(this);
               this.$router.push({
                 name: "summary",
@@ -65,7 +63,20 @@ export default {
         });
     }
   },
-  mounted() {}
+  mounted() {
+    apiGateway
+      .commitFeedback(
+        "Mehmet Kadayıfçı",
+        "mkadayifci@gmail.com",
+        "Çok acayip iyi, çok .ok güzel olmuş abi, ellerine koluna sığmasın inşallah"
+      )
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
 };
 </script>
 
