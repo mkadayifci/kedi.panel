@@ -1,4 +1,5 @@
 import axios from 'axios'
+import errorInterceptor from './error-interceptor'
 
 export default new class ApiGateway {
     hostProtocolSection = "http://localhost:5334";
@@ -10,26 +11,8 @@ export default new class ApiGateway {
         if (process.env.NODE_ENV === 'production') {
             this.hostProtocolSection = "";
         }
-        axios.interceptors.response.use(null, function (error) {
 
-            if (axios.isCancel(error)) {
-                return Promise.reject(error);
-            }
-            window.vueInstance.$logger.submitException(error);
-            if (!error.response) {
-                window.vueInstance.$errNotifier("Error", "Network error! Couldn't reach the host application.");
-            }
-            else if (error.response.status === 500) {
-                switch (error.response.data.subCode) {
-                    case 100://Host application didn't find the session Id, we must open file manager to create new session.
-                        localStorage.removeItem("currentSession");
-                        window.vueInstance.$errNotifier("Session Error", "Host application couldn't find session in the memory. Please select a dump file to start inspection.");
-                        window.vueInstance.$router.push({ name: "open-file" });
-                        break;
-                }
-            }
-            return Promise.reject(error);
-        });
+        axios.interceptors.response.use(null, errorInterceptor);
     }
     takeCancellationToken() {
         this.cancelToken = axios.CancelToken;
@@ -43,7 +26,7 @@ export default new class ApiGateway {
         return axios
             .get(`${this.hostProtocolSection}${this.urlPrefix}/object/${sessionId}/${objectPointer}`,
                 {
-                     cancelToken: this.source.token
+                    cancelToken: this.source.token
                 });
     }
     getExceptionObjects(sessionId) {

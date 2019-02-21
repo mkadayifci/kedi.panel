@@ -6,7 +6,7 @@
       <notifications
         style="z-index:15000"
         type="error"
-        :duration=5000
+        :duration=10000
         position="bottom left"
         group="foo"
         width="400px"
