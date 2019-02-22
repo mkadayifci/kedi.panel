@@ -14,6 +14,7 @@
   background-color: #181818;
   color: white;
 }
+
 .tableIcon {
   font-size: 18px;
   cursor: pointer;
@@ -99,9 +100,25 @@ body {
   font-size: 14px !important;
 }
 
-
 .modal-header {
-padding: 0.5rem 1rem !important;
-background-color:  #d19b3d !important;
+  padding: 0.5rem 1rem !important;
+  background-color: #d19b3d !important;
+}
 
+
+
+.linear-wipe {
+  background: linear-gradient(to right, #000000 20%, blue  40%, #d19b3d  60%, #000000 80%);
+  background-size: 200% auto;
+  color: #000;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 1s linear infinite;
+}
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
 }

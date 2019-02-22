@@ -1,9 +1,8 @@
 <template>
   <div class="container-fluid pt-80">
     <h5>Open File</h5>
-
+    <span>Please select a dump file to inspect.</span>
     <hr>
-
     <file-manager v-on:on-dumpfile-clicked="onDumpFileClicked"/>
   </div>
 </template>
@@ -24,6 +23,14 @@ export default {
       let currentSession = this.$store.getters.currentSession;
 
       if (currentSession) {
+        if (currentSession.filePath === filePath) {
+          this.$router.push({
+            name: "summary",
+            params: { sessionId: currentSession.sessionId }
+          });
+          return;
+        }
+
         let self = this;
         this.$dialog
           .confirm("This will close current dump file! Do you want to proceed?")
@@ -63,20 +70,7 @@ export default {
         });
     }
   },
-  mounted() {
-    apiGateway
-      .commitFeedback(
-        "Mehmet Kadayıfçı",
-        "mkadayifci@gmail.com",
-        "Çok acayip iyi, çok .ok güzel olmuş abi, ellerine koluna sığmasın inşallah"
-      )
-      .then(response => {
-        console.log(response);
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  }
+  mounted() {}
 };
 </script>
 

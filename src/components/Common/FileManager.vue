@@ -16,7 +16,19 @@
       <i class="fa fa-level-up" aria-hidden="true"></i>
       <span>Level Up</span>
     </div>
-
+    <div
+      v-if="isReturnToAnalyzerVisible"
+      @click="returnToAnalyzer()"
+      class="specialButton"
+      style="margin-left: 50px;"
+    >
+      <img
+        style="width:22px;height:22px;vertical-align:bottom !important"
+        class="logo"
+        :src="require('@/assets/images/logo-mini.png')"
+      >
+      <span style="padding-left:10px">Return to Analyzer</span>
+    </div>
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li
@@ -33,7 +45,7 @@
       <div class="col-md-6" v-for="entry in fileSystemResult.entries" :key="entry.path">
         <div
           class="noneClickableStyle ioItem"
-          :class="{'clickableStyle':entry.isFile && entry.itLooksLikeDump || !entry.isFile}"
+          :class="{'clickableStyle':entry.isFile && entry.itLooksLikeDump || !entry.isFile,'linear-wipe':entry.isFile && entry.itLooksLikeDump }"
           @click="itemClicked(entry.path,entry.isFile,entry.itLooksLikeDump)"
         >
           <img :src="entry.iconBase64">
@@ -54,16 +66,35 @@ export default {
       fileSystemResult: {}
     };
   },
-  computed: {},
+  computed: {
+    isReturnToAnalyzerVisible: function() {
+      let currentSession = this.$store.getters.currentSession;
+      if (currentSession) {
+        return true;
+      }
+      return false;
+    }
+  },
   components: {},
   methods: {
+    returnToAnalyzer: function() {
+      let currentSession = this.$store.getters.currentSession;
+      if (currentSession) {
+        this.$router.push({
+          name: "summary",
+          params: { sessionId: currentSession.sessionId }
+        });
+      }
+    },
     getPathContent: function(path) {
       this.$loadingIndicatorHelper.show(this);
       apiGateway
         .getFileSystemInfo(path)
         .then(response => {
           this.fileSystemResult = response.data;
-          this.$store.commit("lastLocation", path);
+          if (path) {
+            this.$store.commit("lastLocation", path);
+          }
           this.$loadingIndicatorHelper.hide(this);
         })
         .catch(error => {

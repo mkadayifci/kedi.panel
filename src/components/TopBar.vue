@@ -1,11 +1,13 @@
 <template>
   <div>
     <nav style="z-index:999" class="navbar fixed-top navbar-light bg-light navBarCustom">
+      <div>
       <a class="navbar-brand navBrandCustom" href="#">
         <img class="logo" :src="require('@/assets/images/logo-mini.png')">
         <span class="logoTitle">kedi analyzer</span>
-        <span v-if="currentFileName" class="activeFileLabel">({{currentFileName}})</span>
       </a>
+        <span v-if="currentFileName" class="activeFileLabel">({{currentFileName}})</span>
+        </div>
       <div class="form-inline my-2 my-lg-0">
         <b-link style="padding-right:20px;color:black" @click="showFeedback">Send Feedback</b-link>
         <button
@@ -151,7 +153,6 @@ export default {
 
 .activeFileLabel {
   font-size: 0.8rem !important;
-  padding-left: 10px;
 }
 </style>
 
