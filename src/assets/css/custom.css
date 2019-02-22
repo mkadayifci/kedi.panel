@@ -56,20 +56,15 @@ body {
 
 .multiselect__tags {
   min-height: 30px;
-  margin: 5px 0px !important;
 }
 
-.multiselect__input {
-  font-size: 12px !important;
-}
 
-.multiselect__input {
-  font-size: 12px !important;
-}
-
+.multiselect__input,
+.multiselect__tags,
 .multiselect__option {
   font-size: 12px !important;
 }
+
 
 .header-icon {
   font-size: 2em !important;

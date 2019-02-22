@@ -5,26 +5,29 @@
       <h5 class="d-inline-block">Play Zone</h5>
     </div>This result is limited to first 500 objects. Max recursion number is 25 for member of objects.
     <hr>
-    <table style="width:100%">
-      <tr>
-        <td class="labelColumn">Result Objects</td>
-        <td>
-          <vue-multiselect :multiple="true" v-model="typesValue" :options="options"/>
-        </td>
-      </tr>
-      <tr>
-        <td class="labelColumn">Search Value</td>
-        <td>
-          <b-form-input @keyup.enter.native="getResults" v-model="searchValue">cs_iis</b-form-input>
-        </td>
-      </tr>
-      <tr colspan="2">
-        <td style="width:150px"></td>
-        <td style="padding-top:5px">
-          <b-button v-on:click="getResults">Search</b-button>
-        </td>
-      </tr>
-    </table>
+    <div class="row labelRow">
+      <div class="col-md-1 labelDiv">
+        <span class="labelColumn">Result Objects</span>
+      </div>
+      <div class="col-md-11">
+        <vue-multiselect :multiple="true" v-model="typesValue" :options="options"/>
+      </div>
+    </div>
+    <div class="row labelRow">
+      <div class="col-md-1 labelDiv">
+        <span class="labelColumn">Search Value</span>
+      </div>
+      <div class="col-md-11">
+        <b-form-input @keyup.enter.native="getResults" v-model="searchValue">cs_iis</b-form-input>
+      </div>
+    </div>
+    <div class="row labelRow">
+      <div class="col-md-1"></div>
+      <div class="col-md-11">
+        <b-button v-on:click="getResults">Search</b-button>
+      </div>
+    </div>
+
     <div>
       <hr>
       <b-table
@@ -91,7 +94,7 @@ import apiGateway from "@/server-communication/api-gateway";
 
 export default {
   name: "playZoneView",
-  components: {  },
+  components: {},
   data: function() {
     return {
       resultList: [],
@@ -143,7 +146,6 @@ export default {
           this.options = response.data;
         })
         .catch(error => {});
-
     },
     getResults: function() {
       this.$loadingIndicatorHelper.showProgress(this);
@@ -171,13 +173,20 @@ export default {
 
 <style scoped>
 .labelColumn {
-  width: 150px;
   text-align: right;
   font-weight: bold;
-  padding-right: 5px;
+  display: inline-block !important;
+  vertical-align: middle;
+}
+.labelRow {
+  padding-bottom: 5px;
 }
 .card-body p {
   margin-bottom: 0.2rem !important;
 }
-
+.labelDiv {
+  display: table-cell !important;
+  text-align: right;
+  padding-right: 0px !important;
+}
 </style>

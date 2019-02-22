@@ -12,7 +12,7 @@
         <a class="nav-link active" href="#profile" role="tab" data-toggle="tab">Object Detail</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#buzz" role="tab" data-toggle="tab">Object Referecenses</a>
+        <a class="nav-link" href="#buzz" role="tab" data-toggle="tab">Object References</a>
       </li>
     </ul>
     <div style="padding-top:10px" class="tab-content">
