@@ -80,7 +80,7 @@
 
         <div v-if="isLoaded" class="row">
           <div class="col-md-12">
-            <template>
+            <div v-if="objectDetail.members.length>0">
               <h6>Members</h6>
               <b-table
                 hover
@@ -105,7 +105,28 @@
                   >{{data.item.value}}</span>
                 </template>
               </b-table>
-            </template>
+            </div>
+         <div v-if="arrayData.length>0">
+              <h6>Array Elements ({{arrayData.length}})</h6>
+              <b-table
+                hover
+                :fields="arrayDataFields"
+                :items="arrayData"
+                tbody-class="tbodyOuterBeige"
+                thead-class="tHead"
+                class="table b-table table-hover table-sm"
+              >
+                <template slot="address" slot-scope="data">
+                  <router-link
+                    right
+                    class="nav-item"
+                    tag="a"
+                    target="_blank"
+                    :to="{ name: 'object', params: {sessionId:$route.params.sessionId, objectPointer:data.item.address }}"
+                  >{{data.item.address}}</router-link>
+                </template>
+              </b-table>
+            </div>
           </div>
         </div>
       </div>
@@ -127,9 +148,25 @@ export default {
   data: () => {
     return {
       referenceData: [{ children: [] }],
-
+      arrayData: [{ children: [] }],
       isLoaded: false,
       objectDetail: {},
+      arrayDataFields: {
+        index: {
+          label: "Indexer",
+          tdClass: "tableMinColWidth",
+          formatter: value => {
+            return "[" + value + "]";
+          }
+        },
+        address: {
+          label: "Address",
+          tdClass: "tableMinColWidth"
+        },
+        value: {
+          label: "Value / Content"
+        }
+      },
       fields: {
         name: {
           label: "Name"
@@ -161,20 +198,20 @@ export default {
       let referencedChildren = [];
       let referencedByChildren = [];
 
-      this.objectDetail.referencedObjects.forEach(item => {
-        referencedChildren.push({
+      referencedChildren = this.objectDetail.referencedObjects.map(item => {
+        return {
           text: `this -> ${item.fieldName} - ${item.address}`,
-          address:item.address
-        });
+          address: item.address
+        };
       });
-
-      this.objectDetail.referencedByObjects.forEach(item => {
-        referencedByChildren.push({
+      console.log(referencedChildren);
+      referencedByChildren = this.objectDetail.referencedByObjects.map(item => {
+        return {
           text: `By ${item.relatedType} (${item.baseAddress}) at field "${
             item.fieldName
           }"`,
-          address:item.baseAddress
-        });
+          address: item.baseAddress
+        };
       });
 
       this.referenceData = {
@@ -199,6 +236,7 @@ export default {
       .getObject(this.$route.params.sessionId, this.$route.params.objectPointer)
       .then(response => {
         this.objectDetail = response.data;
+        this.arrayData = this.objectDetail.arrayElements;
         this.generateReferenceData();
         this.isLoaded = true;
         this.$loadingIndicatorHelper.hide(this);

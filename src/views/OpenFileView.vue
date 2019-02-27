@@ -23,13 +23,6 @@ export default {
       let currentSession = this.$store.getters.currentSession;
 
       if (currentSession) {
-        if (currentSession.filePath === filePath) {
-          this.$router.push({
-            name: "summary",
-            params: { sessionId: currentSession.sessionId }
-          });
-          return;
-        }
 
         let self = this;
         this.$dialog

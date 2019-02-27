@@ -1,20 +1,18 @@
 <template>
   <li class="item">
     <div @click="toggle" @dblclick="changeType">
-      <span v-if="isFolder">[{{open ? '-' : '+'}}] </span>
-      
+      <span v-if="isFolder">[{{open ? '-' : '+'}}]</span>
 
-   <router-link v-if="model.address!==undefined"
-            right
-            class="nav-item"
-            tag="a"
-            target="_blank"
-            :to="{ name: 'object', params: {sessionId:$route.params.sessionId, objectPointer:model.address }}"
-          >{{model.text}}</router-link>
-
+      <router-link
+        v-if="model.address!==undefined"
+        right
+        class="nav-item"
+        tag="a"
+        target="_blank"
+        :to="{ name: 'object', params: {sessionId:$route.params.sessionId, objectPointer:model.address }}"
+      >{{model.text}}</router-link>
 
       <span v-else :class="{boldStyle:model.bold}">{{model.text}}</span>
-      
     </div>
 
     <ul v-show="open" v-if="isFolder">
@@ -27,12 +25,12 @@
 export default {
   name: "tree",
   props: ["model"],
-  data() {
+  data:function() {
     return { open: true };
   },
   computed: {
     isFolder() {
-      return this.model.nodes && this.model.nodes.length;
+      return this.model.nodes && this.model.nodes.length > 0;
     }
   },
   components: {},

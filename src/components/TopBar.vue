@@ -4,7 +4,7 @@
       <div>
       <a class="navbar-brand navBrandCustom" href="#">
         <img class="logo" :src="require('@/assets/images/logo-mini.png')">
-        <span class="logoTitle">kedi analyzer</span>
+        <span class="logoTitle">kedi</span>
       </a>
         <span v-if="currentFileName" class="activeFileLabel">({{currentFileName}})</span>
         </div>

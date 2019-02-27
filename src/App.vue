@@ -6,10 +6,9 @@
       <notifications
         style="z-index:15000"
         type="error"
-        :duration=10000
+        :duration=15000
         position="bottom left"
         group="foo"
-        width="400px"
       />
       <div class="row">
         <div v-if="isSideBarVisible" class="col-md-2 sideBarContainer">
@@ -70,5 +69,13 @@ export default {
   opacity: 0;
   transform: translateY(+30%);
 }
+.notifications{
+  width: fit-content !important;
+}
+.vue-notification{
+border-radius: 5px !important;
+}
+
+
 </style>
 

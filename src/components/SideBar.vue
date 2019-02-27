@@ -96,7 +96,7 @@
     <div class="fixed-bottom" style="padding-left: 34px;padding-bottom:5px;font-size:0.6rem">
       <div class="row">
         <span>website :&nbsp;&nbsp;</span>
-        <a style="color:gray" target="_blank" href="https://www.kedi-analyzer.com">kedi-analyzer.com</a>
+        <a style="color:gray" target="_blank" href="https://www.kedi.io">kedi.io - alfa</a>
       </div>
       <div class="row">
         <span>e-mail :&nbsp;&nbsp;</span>
