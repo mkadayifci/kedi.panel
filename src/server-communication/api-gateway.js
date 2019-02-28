@@ -160,7 +160,7 @@ export default new class ApiGateway {
     }
     commitFeedback(name, emailAddress, content) {
         return axios
-            .post("https://www.kedi-analyzer.com/wp-json/wp/v2/comments", null, {
+            .post("https://kedi.io/wp-json/wp/v2/comments", null, {
                 params: {
                     author_name: name,
                     author_email: emailAddress,

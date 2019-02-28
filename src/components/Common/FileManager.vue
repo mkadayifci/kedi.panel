@@ -87,6 +87,10 @@ export default {
       }
     },
     getPathContent: function(path) {
+      if (!path) {
+        path = "~";
+      }
+      
       this.$loadingIndicatorHelper.show(this);
       apiGateway
         .getFileSystemInfo(path)
