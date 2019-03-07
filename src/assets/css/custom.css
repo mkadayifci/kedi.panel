@@ -7,7 +7,7 @@
 }
 
 .tbodyOuterBeige {
-  background-color: beige;
+  background-color: rgb(232, 240, 254);
 }
 
 .tHead {
@@ -18,7 +18,7 @@
 .tableIcon {
   font-size: 18px;
   cursor: pointer;
-  color: darkgoldenrod;
+  color: gray;
 }
 
 table {
