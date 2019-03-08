@@ -186,4 +186,13 @@ router.beforeEach((to, from, next) => {
   }
 });
 
+router.afterEach(( to, from ) => {
+
+  gtag('config', 'UA-135788952-2', {
+    'page_title' : to.meta.title,
+    'page_path': to.path
+  });
+
+});
+
 export default router;
